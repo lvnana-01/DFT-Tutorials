@@ -1,0 +1,29 @@
+! Step 2: SCF on the (coarser) k grid used by the DFPT phonon calculation.
+! Same prefix and outdir as al.scf.fit.in: the a2Fsave file written in step 1
+! stays in outdir and is read by ph.x in step 3.
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'al'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 7.63
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 40.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-12       ! DFPT needs a tightly converged ground state
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.upf
+ATOMIC_POSITIONS crystal
+  Al  0.0  0.0  0.0
+K_POINTS automatic
+  12 12 12  0 0 0

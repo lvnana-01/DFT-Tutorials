@@ -1,0 +1,31 @@
+! EPW route, step 1: SCF of fcc Pb for the DFPT phonon run.
+! Pseudopotential: PseudoDojo nc-sr-05 PBE standard, Pb.upf (norm-conserving,
+! 5d10 6s2 6p2 = 14 valence electrons). EPW workflows are normally run with
+! norm-conserving pseudopotentials, as in the official EPW tutorials.
+! celldm(1): replace by your own relaxed PBE lattice parameter (chapter 5).
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'pb'
+  outdir      = './'            ! pp.py expects _ph0/ and pb.save/ in the working dir
+  pseudo_dir  = '../pseudo'
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 9.50          ! Bohr; placeholder, use your relaxed value
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 60.0          ! Ry
+  occupations = 'smearing'
+  smearing    = 'mp'          ! Methfessel-Paxton
+  degauss     = 0.04          ! Ry
+/
+&ELECTRONS
+  conv_thr    = 1.0d-12
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Pb  207.2  Pb.upf
+ATOMIC_POSITIONS crystal
+  Pb  0.0  0.0  0.0
+K_POINTS automatic
+  8 8 8  0 0 0

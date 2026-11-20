@@ -1,0 +1,8 @@
+%nprocshared=16
+%mem=24GB
+%oldchk=ts_attack.chk
+%chk=freq_ts.chk
+#p B3LYP/Def2SVP EmpiricalDispersion=GD3BJ SCRF=(CPCM,Solvent=Water,Read) Freq Geom=AllCheck Guess=Read
+
+Eps=4.0
+

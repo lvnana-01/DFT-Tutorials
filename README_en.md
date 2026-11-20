@@ -2,17 +2,17 @@
 
 # DFT-Tutorials: First-Principles Calculation Tutorials & Scripts
 
-**VASP · Gaussian · CP2K · OpenMX — beginner to advanced ｜ ready-to-run inputs ｜ helper scripts ｜ curated GitHub resources**
+**VASP · Gaussian · CP2K · OpenMX · Quantum ESPRESSO — beginner to advanced ｜ ready-to-run inputs ｜ helper scripts ｜ curated GitHub resources**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://zenggs05.github.io/DFT-Tutorials/) [![GitHub stars](https://img.shields.io/github/stars/zenggs05/DFT-Tutorials?style=social)](https://github.com/zenggs05/DFT-Tutorials/stargazers) [![Last commit](https://img.shields.io/github/last-commit/zenggs05/DFT-Tutorials)](https://github.com/zenggs05/DFT-Tutorials/commits/main)
 
-A comprehensive, practical collection of **density functional theory (DFT) tutorials** (written in Simplified Chinese, with English chapter subtitles) for **VASP, Gaussian, CP2K and OpenMX**: installation, input files, convergence tests, geometry/cell optimisation, band structure & DOS, hybrid functionals, DFT+U, spin-orbit coupling, surfaces & adsorption, transition states (NEB/IRC), phonons, ab initio molecular dynamics, TD-DFT excited states, solvation, NBO/charge analysis, electron transport and more. Every chapter ships runnable example inputs, keyword-by-keyword explanations, troubleshooting tips and references, plus Python/Bash helper scripts.
+A comprehensive, practical collection of **density functional theory (DFT) tutorials** (written in Simplified Chinese, with English chapter subtitles) for **VASP, Gaussian, CP2K, OpenMX and Quantum ESPRESSO**: installation, input files, convergence tests, geometry/cell optimisation, band structure & DOS, hybrid functionals, DFT+U, spin-orbit coupling, surfaces & adsorption, transition states (NEB/IRC), phonons, ab initio molecular dynamics, TD-DFT excited states, solvation, NBO/charge analysis, electron transport and more. Every chapter ships runnable example inputs, keyword-by-keyword explanations, troubleshooting tips and references, plus Python/Bash helper scripts.
 
 📖 **Read online (searchable website):** <https://zenggs05.github.io/DFT-Tutorials/>
 
 🎓 **One-on-one tutoring (Chinese):** <https://feiniaofly.cn/>
 
-Currently **79 chapters**, **167 example input sets**, **85 scripts**, and a curated index of **230+ related GitHub repositories**.
+Currently **97 chapters**, **185 example input sets**, **97 scripts**, and a curated index of **230+ related GitHub repositories**.
 
 ## Contents
 
@@ -22,7 +22,9 @@ Currently **79 chapters**, **167 example input sets**, **85 scripts**, and a cur
 | **Gaussian** | Gaussian-basis quantum chemistry for molecules, reactions and spectra | [Gaussian/README.md](Gaussian/README.md) |
 | **CP2K** | GPW mixed-basis code for large-scale AIMD and QM/MM | [CP2K/README.md](CP2K/README.md) |
 | **OpenMX** | numerical atomic orbitals for magnetism, transport and O(N) methods | [OpenMX/README.md](OpenMX/README.md) |
+| **QE** | open-source plane-wave code for phonons, electron-phonon coupling and Wannier functions | [QE/README.md](QE/README.md) |
 | **Common** | Linux/HPC, modelling, ASE/pymatgen, visualisation, learning path | [Common/README.md](Common/README.md) |
+| **Case studies** | End-to-end workflows, e.g. an enzyme-catalysis QM cluster model (inputs only) | [Cases/README.md](Cases/README.md) |
 | **NEP/GPUMD scripts** | ML-potential dataset generation, NEP analysis, GPUMD thermal transport plots | [Scripts/README.md](Scripts/README.md) |
 | **Resources** | 230+ curated GitHub repositories and official docs | [Resources/github-repos.md](Resources/github-repos.md) |
 
@@ -119,6 +121,29 @@ Currently **79 chapters**, **167 example input sets**, **85 scripts**, and a cur
 | 16 | [Surfaces & Interfaces in OpenMX: ESM, Work Function & Charge Doping](OpenMX/tutorials/16-surface-esm-workfunction.md) | 第16章 表面与界面：ESM、功函数、电荷掺杂 |
 | 17 | [Electron Transport with NEGF in OpenMX](OpenMX/tutorials/17-negf-transport.md) | 第17章 NEGF 电子输运 |
 | 18 | [第18章 并行、大体系 O(N)、作业脚本与常见错误排查（Parallelization, Large-Scale O(N) Methods, Job Scripts & Troubleshooting in OpenMX）](OpenMX/tutorials/18-parallel-on-errors.md) | 第18章 并行、大体系 O(N)、作业脚本与常见错误排查（Parallelization, Large-Scale O(N) Methods, Job Scripts & Troubleshooting in OpenMX） |
+
+### QE
+
+| # | Topic | 中文标题 |
+|---|---|---|
+| 1 | [Installing Quantum ESPRESSO: conda-forge, Source Build, GPU & WSL](QE/tutorials/01-install.md) | 第1章 QE 概述、版本与安装 |
+| 2 | [pw.x Input Anatomy & Your First SCF Calculation](QE/tutorials/02-input-anatomy.md) | 第2章 pw.x 输入文件结构与第一个 SCF |
+| 3 | [Pseudopotentials in QE: SSSP, PseudoDojo, pslibrary](QE/tutorials/03-pseudopotentials.md) | 第3章 赝势选择：SSSP、PseudoDojo 与 pslibrary |
+| 4 | [Convergence Tests in QE: Cutoffs, k-points & Smearing](QE/tutorials/04-convergence.md) | 第4章 收敛测试：ecutwfc/ecutrho、k 点与 smearing |
+| 5 | [Structure Relaxation & Equation of State: relax, vc-relax, ev.x](QE/tutorials/05-relax-eos.md) | 第5章 结构优化与状态方程 |
+| 6 | [Band Structure, DOS & PDOS: bands.x, dos.x, projwfc.x](QE/tutorials/06-band-dos-pdos.md) | 第6章 能带结构、态密度与投影态密度 |
+| 7 | [Spin Polarization, Noncollinear Magnetism & SOC](QE/tutorials/07-magnetism-soc.md) | 第7章 磁性、非共线与自旋轨道耦合 |
+| 8 | [DFT+U, DFT+U+V & Linear-Response Hubbard Parameters with hp.x](QE/tutorials/08-dftu-hp.md) | 第8章 DFT+U/U+V 与 hp.x 线性响应 |
+| 9 | [vdW Corrections, 2D Materials, Surfaces & Work Function](QE/tutorials/09-vdw-surface-workfunction.md) | 第9章 范德华修正、二维材料、表面与功函数 |
+| 10 | [Charge Density, Difference, ELF, STM & Bader](QE/tutorials/10-charge-elf-bader.md) | 第10章 电荷密度、差分电荷、ELF、STM 与 Bader 分析 |
+| 11 | [Nudged Elastic Band with neb.x](QE/tutorials/11-neb.md) | 第11章 过渡态搜索：neb.x |
+| 12 | [Phonons with DFPT: ph.x, q2r.x, matdyn.x](QE/tutorials/12-phonon-dfpt.md) | 第12章 声子：ph.x、q2r.x 与 matdyn.x |
+| 13 | [Dielectric Tensor, Born Charges, IR & Raman](QE/tutorials/13-dielectric-ir-raman.md) | 第13章 介电常数、Born 有效电荷、红外与拉曼 |
+| 14 | [Hybrid Functionals & meta-GGA: HSE, PBE0, ACE, SCAN](QE/tutorials/14-hybrid-metagga.md) | 第14章 杂化泛函与 meta-GGA |
+| 15 | [Maximally Localized Wannier Functions with Wannier90](QE/tutorials/15-wannier90.md) | 第15章 Wannier90 接口与插值能带 |
+| 16 | [Electron-Phonon Coupling & Superconductivity: ph.x and EPW](QE/tutorials/16-elph-epw.md) | 第16章 电声耦合与超导：ph.x 与 EPW 入门 |
+| 17 | [Ab Initio MD: Born-Oppenheimer with pw.x and Car-Parrinello with cp.x](QE/tutorials/17-md-cp.md) | 第17章 分子动力学：pw.x MD 与 Car-Parrinello cp.x |
+| 18 | [Automation, Parallel Performance & Troubleshooting](QE/tutorials/18-automation-parallel-troubleshooting.md) | 第18章 自动化、并行性能与报错排查 |
 
 ### Common
 

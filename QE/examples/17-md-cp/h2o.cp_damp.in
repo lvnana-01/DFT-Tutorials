@@ -1,0 +1,44 @@
+! cp.x step 1: bring the electrons to the ground state with damped dynamics
+! (ions fixed). Writes the restart folder outdir/h2o_50.save (ndw = 50).
+! Pseudopotentials: PseudoDojo nc-sr-05 PBE standard H.upf and O.upf
+! (norm-conserving, so no box grid nr1b/nr2b/nr3b is needed; cp.x does not
+! support PAW). Units: cp.x uses HARTREE atomic units for dt (1 a.u. = 2.4189e-17 s).
+&CONTROL
+  calculation   = 'cp'
+  title         = 'H2O molecule, electronic minimisation'
+  restart_mode  = 'from_scratch'
+  prefix        = 'h2o'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  ndw           = 50
+  nstep         = 300           ! number of damped electronic steps (upper bound)
+  iprint        = 10
+  isave         = 100
+  dt            = 5.0           ! Hartree a.u. (~0.12 fs)
+  tprnfor       = .true.
+  etot_conv_thr = 1.0d-6        ! Ha
+  ekin_conv_thr = 1.0d-6        ! fictitious electronic kinetic energy, Ha
+/
+&SYSTEM
+  ibrav     = 1
+  celldm(1) = 20.0              ! Bohr (about 10.6 Angstrom) cubic box
+  nat       = 3
+  ntyp      = 2
+  ecutwfc   = 85.0              ! Ry; PseudoDojo "normal" hint for O is 42 Ha = 84 Ry
+/
+&ELECTRONS
+  electron_dynamics = 'damp'
+  electron_damping  = 0.2
+  emass             = 400.0     ! fictitious electron mass (a.u.)
+  emass_cutoff      = 2.5       ! Ry, Fourier acceleration
+/
+&IONS
+  ion_dynamics = 'none'
+/
+ATOMIC_SPECIES
+  O  15.999  O.upf
+  H   2.014  H.upf              ! deuterium mass: allows a larger dt
+ATOMIC_POSITIONS angstrom
+  O   5.290  5.290  5.410
+  H   5.290  6.090  4.790      ! O-H = 1.01 Angstrom (slightly stretched, so the molecule vibrates)
+  H   5.290  4.530  4.820      ! O-H = 0.96 Angstrom

@@ -1,0 +1,35 @@
+&CONTROL
+! Band structure along L - Gamma - X for GaAs with SOC.
+! Must use the same prefix/outdir/pseudopotentials/cutoffs as the scf run.
+  calculation = 'bands'
+  prefix      = 'gaas_soc'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 10.68
+  nat         = 2
+  ntyp        = 2
+  ecutwfc     = 60.0
+  ecutrho     = 480.0
+  occupations = 'fixed'
+  noncolin    = .true.
+  lspinorb    = .true.
+  nbnd        = 36               ! spinor bands: 2x the scalar count
+/
+&ELECTRONS
+  diago_full_acc = .true.
+/
+ATOMIC_SPECIES
+  Ga  69.723  Ga.rel-pbe-dn-kjpaw_psl.1.0.0.UPF
+  As  74.922  As.rel-pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Ga  0.00  0.00  0.00
+  As  0.25  0.25  0.25
+! Cartesian coordinates in units of 2*pi/a (valid for any fcc setting)
+K_POINTS tpiba_b
+  3
+  0.5  0.5  0.5  40   ! L
+  0.0  0.0  0.0  40   ! Gamma
+  1.0  0.0  0.0  1    ! X

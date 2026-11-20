@@ -1,0 +1,10 @@
+&DOS
+! Step 5: total DOS from the nscf data. No degauss given here, so the
+! tetrahedron method stored by the nscf run is used.
+  prefix = 'si'
+  outdir = './tmp'
+  fildos = 'si.dos'
+  Emin   = -15.0              ! eV (absolute energies, not shifted to E_F)
+  Emax   =  15.0
+  DeltaE =  0.01              ! eV grid step
+/

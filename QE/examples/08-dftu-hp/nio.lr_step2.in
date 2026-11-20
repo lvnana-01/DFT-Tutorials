@@ -1,0 +1,46 @@
+&CONTROL
+! Linear-response U for NiO, step 2 of 3 (see run_hp.sh):
+! insulating scf with fixed occupations, integer tot_magnetization and the
+! same number of bands as step 1, restarting from the step-1 potential
+! and wavefunctions. @U_IN@, @NBND@ and @TOTMAG@ are set by run_hp.sh.
+  calculation = 'scf'
+  prefix      = 'nio_lr'
+  outdir      = './tmp_lr'
+  pseudo_dir  = './pseudo'
+  verbosity   = 'high'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 4
+  ntyp        = 3
+  ecutwfc     = 50.0
+  ecutrho     = 400.0
+  occupations = 'fixed'
+  nspin       = 2
+  tot_magnetization = @TOTMAG@
+  nbnd        = @NBND@
+/
+&ELECTRONS
+  conv_thr    = 1.0d-14       ! hp.x needs a very well converged ground state
+  mixing_beta = 0.3
+  startingpot = 'file'
+  startingwfc = 'file'
+/
+ATOMIC_SPECIES
+  Ni1  58.6934  ni_pbe_v1.4.uspp.F.UPF
+  Ni2  58.6934  ni_pbe_v1.4.uspp.F.UPF
+  O    15.999   O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  4.170  2.085  2.085
+  2.085  4.170  2.085
+  2.085  2.085  4.170
+ATOMIC_POSITIONS angstrom
+  Ni1  0.000  0.000  0.000
+  Ni2  2.085  2.085  0.000
+  O    2.085  0.000  0.000
+  O    4.170  2.085  0.000
+K_POINTS automatic
+  4 4 4 0 0 0
+HUBBARD {ortho-atomic}
+U Ni1-3d @U_IN@
+U Ni2-3d @U_IN@

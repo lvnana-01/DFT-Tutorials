@@ -1,0 +1,13 @@
+&INPUTPP
+! Empty INPUTPP: only step 2. drho = rho(AB) - rho(slab) - rho(CO).
+! The FIRST file must be the one with the most atoms (atoms are read from it).
+/
+&PLOT
+  nfile     = 3
+  filepp(1) = 'ab.rho.pp',   weight(1) =  1.0
+  filepp(2) = 'slab.rho.pp', weight(2) = -1.0
+  filepp(3) = 'co.rho.pp',   weight(3) = -1.0
+  iflag         = 3
+  output_format = 6
+  fileout       = 'drho.cube'
+/

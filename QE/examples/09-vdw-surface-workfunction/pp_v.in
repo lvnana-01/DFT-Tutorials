@@ -1,0 +1,15 @@
+&INPUTPP
+! Extract V_bare + V_H (plot_num = 11) from the slab scf.
+! With tefield and dipfield active, pp.x also adds the dipole-correction
+! sawtooth (QE PP/src/punch_plot.f90), so the vacuum level is flat on each
+! side of the slab only after the correction.
+  prefix   = 'al111'
+  outdir   = './tmp'
+  filplot  = 'al111.v_bare_h'
+  plot_num = 11
+/
+&PLOT
+  iflag         = 3
+  output_format = 6              ! Gaussian cube, for qe_cube_diff.py / VESTA
+  fileout       = 'al111.v_bare_h.cube'
+/

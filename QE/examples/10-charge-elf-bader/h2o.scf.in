@@ -1,0 +1,30 @@
+&CONTROL
+! Chapter 10: isolated H2O in a 12 Angstrom box, Gamma point only.
+! Norm-conserving pseudopotentials are used because the ELF of pp.x is only
+! complete for NC (for USPP/PAW the kinetic term misses augmentation parts).
+! SG15 ONCV (PBE): O_ONCV_PBE-1.2.upf, H_ONCV_PBE-1.2.upf
+  calculation = 'scf'
+  prefix      = 'h2o'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav     = 1
+  A         = 12.0           ! cubic box edge (Angstrom)
+  nat       = 3
+  ntyp      = 2
+  ecutwfc   = 80.0           ! NC: test convergence, see Chapter 4
+  ecutrho   = 320.0          ! 4 x ecutwfc for NC
+  assume_isolated = 'mt'     ! Martyna-Tuckerman correction for a molecule
+/
+&ELECTRONS
+  conv_thr = 1.0d-9
+/
+ATOMIC_SPECIES
+  O  15.999  O_ONCV_PBE-1.2.upf
+  H   1.008  H_ONCV_PBE-1.2.upf
+ATOMIC_POSITIONS angstrom
+  O   6.0000  6.0000  6.0000
+  H   6.7569  6.5860  6.0000
+  H   5.2431  6.5860  6.0000
+K_POINTS gamma

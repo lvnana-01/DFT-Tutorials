@@ -1,0 +1,35 @@
+! Si (diamond), HSE (QE 'hse': 25% short-range exact exchange, mu = 0.106 bohr^-1).
+! pw.x first converges a plain PBE SCF, then switches on exact exchange (outer EXX loop).
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'si_hse'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav     = 0
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 40.0
+  ecutrho   = 160.0
+  nbnd      = 8
+  input_dft = 'hse'      ! overrides the PBE functional read from the UPF files
+  nqx1 = 2, nqx2 = 2, nqx3 = 2   ! q mesh for the Fock operator (default = k mesh); must divide the k mesh
+  ! ecutfock = 80.0      ! optional speed-up (NC only), must be >= ecutwfc and <= ecutrho
+  ! exxdiv_treatment = 'gygi-baldereschi' (default), x_gamma_extrapolation = .true. (default)
+  ! ace = .true. (default): Adaptively Compressed Exchange
+/
+&ELECTRONS
+  conv_thr  = 1.0d-10
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si_ONCV_PBE-1.2.upf
+CELL_PARAMETERS angstrom
+  -2.7150   0.0000   2.7150
+   0.0000   2.7150   2.7150
+  -2.7150   2.7150   0.0000
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  4 4 4 0 0 0

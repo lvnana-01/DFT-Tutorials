@@ -1,0 +1,12 @@
+%nprocshared=16
+%mem=32GB
+%oldchk=opt_reactant.chk
+%chk=sp_tzvp_eps20_reactant.chk
+#p B3LYP/Def2TZVP EmpiricalDispersion=GD3BJ SCRF=(CPCM,Solvent=Water,Read) Geom=Check Guess=Read
+
+hCA II cluster, reactant, single point def2-TZVP, CPCM eps=20 (dielectric sensitivity test)
+
+1 1
+
+Eps=20.0
+

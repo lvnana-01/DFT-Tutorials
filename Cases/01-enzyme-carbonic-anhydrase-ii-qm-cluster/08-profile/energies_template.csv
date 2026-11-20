@@ -1,0 +1,11 @@
+# PLACEHOLDER FILE - NOT RESULTS. No calculation was run for this tutorial.
+# Replace every 'NaN' with numbers from YOUR OWN output files, then set
+# placeholder=no for that row. Rows with placeholder=yes are refused by plot_profile.py.
+#   E_sp_hartree : electronic energy of the def2-TZVP single point (06-sp)
+#   G_corr_hartree : "Thermal correction to Gibbs Free Energy" (Gaussian) or
+#                    G - E(el) (ORCA "G-E(el)") from the def2-SVP frequency job (05-freq)
+#   n_imag : number of imaginary frequencies (0 for minima, 1 for the TS)
+label,state_type,E_sp_hartree,G_corr_hartree,n_imag,placeholder,source_files
+R,minimum,NaN,NaN,NaN,yes,sp_tzvp_reactant.log; opt_reactant.log
+TS1,ts,NaN,NaN,NaN,yes,sp_tzvp_ts.log; ts_attack.log
+P1,minimum,NaN,NaN,NaN,yes,sp_tzvp_product.log; opt_product.log

@@ -1,0 +1,8 @@
+&INPUTPP
+  outdir     = './tmp'
+  prefix     = 'si_hse_w'
+  seedname   = 'si_hse'
+  write_mmn  = .true.
+  write_amn  = .true.
+  write_unk  = .false.
+/

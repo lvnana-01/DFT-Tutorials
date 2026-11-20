@@ -1,0 +1,30 @@
+! EPW route, step 3: nscf on the full, unreduced coarse 6x6x6 k grid.
+! This file has NO K_POINTS card on purpose. Append the 216-point list with
+! the kmesh.pl utility shipped with Wannier90 (see README.md):
+!     cat pb.nscf.in.head > pb.nscf.in
+!     /path/to/wannier90/utility/kmesh.pl 6 6 6 >> pb.nscf.in
+! The coarse k grid (6x6x6) must be a multiple of the coarse q grid (6x6x6).
+&CONTROL
+  calculation = 'nscf'
+  prefix      = 'pb'
+  outdir      = './'            ! pp.py expects _ph0/ and pb.save/ in the working dir
+  pseudo_dir  = '../pseudo'
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 9.50          ! must equal the value in pb.scf.in
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 60.0
+  occupations = 'smearing'
+  smearing    = 'mp'
+  degauss     = 0.04
+  nbnd        = 10            ! 7 occupied (5d + 6s6p) + empty bands for disentanglement
+/
+&ELECTRONS
+  conv_thr    = 1.0d-12
+/
+ATOMIC_SPECIES
+  Pb  207.2  Pb.upf
+ATOMIC_POSITIONS crystal
+  Pb  0.0  0.0  0.0

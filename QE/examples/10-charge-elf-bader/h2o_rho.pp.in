@@ -1,0 +1,14 @@
+&INPUTPP
+! Valence density of H2O as a cube file, e.g. for a quick Bader test.
+  prefix   = 'h2o'
+  outdir   = './tmp'
+  filplot  = 'h2o.rho.pp'
+  plot_num = 0
+/
+&PLOT
+  nfile         = 1
+  filepp(1)     = 'h2o.rho.pp'
+  iflag         = 3
+  output_format = 6
+  fileout       = 'h2o_rho.cube'
+/

@@ -1,11 +1,11 @@
 # DFT 相关 GitHub 仓库精选（Awesome DFT GitHub Repositories）
 
-本页汇总与 **VASP、Gaussian、CP2K、OpenMX** 以及通用第一性原理（DFT）计算相关的优秀 GitHub 仓库：教程、课程、脚本合集、后处理工具与工作流框架，便于按需查找。清单由检索 GitHub 与官方文档整理而来，Star 数与最近更新时间统计于 **2026-11-10**。
+本页汇总与 **VASP、Gaussian、CP2K、OpenMX、Quantum ESPRESSO** 以及通用第一性原理（DFT）计算相关的优秀 GitHub 仓库：教程、课程、脚本合集、后处理工具与工作流框架，便于按需查找。清单由检索 GitHub 与官方文档整理而来，Star 数与最近更新时间统计于 **2026-11-10**。
 
 > [!IMPORTANT]
 > 本仓库只**链接**这些项目，不复制它们的代码或文本。使用前请阅读各项目自己的许可证；标注“未声明”的仓库默认保留所有权利，不能直接转载或再分发。
 
-**目录**：[VASP](#vasp) · [Gaussian](#gaussian) · [CP2K](#cp2k) · [OpenMX](#openmx) · [通用工具与学习资源](#general) · [官方文档](#official-docs)
+**目录**：[VASP](#vasp) · [Gaussian](#gaussian) · [CP2K](#cp2k) · [OpenMX](#openmx) · [通用工具与学习资源](#general) · [Quantum ESPRESSO](#qe) · [酶催化与多尺度模拟](#enzyme) · [官方文档](#official-docs)
 
 <a id="vasp"></a>
 
@@ -397,6 +397,117 @@
 | [Matgenix/jobflow-remote](https://github.com/Matgenix/jobflow-remote) | 43 | 未声明 | 2026-11-06 | 把 jobflow/atomate2 工作流提交到 Slurm/PBS 集群运行（2026 年发布 1.0），是 FireWorks 的轻量替代。 |
 | [henkelmangroup/bader](https://github.com/henkelmangroup/bader) | 1 | 未声明 | 2026-10-08 | Henkelman 组 Bader 电荷分析程序（官网 v1.05）的 GitHub 仓库，支持 VASP CHGCAR 和 cube 文件（Gaussian/CP2K 输出也可用）。 |
 
+<a id="qe"></a>
+
+## Quantum ESPRESSO
+
+本节对应本仓库的 [Quantum ESPRESSO 教程](../QE/README.md)。QE 的主仓库在 GitLab（gitlab.com/QEF/q-e），GitHub 上的 `QEF/q-e` 只是镜像。本节 Star 数与最近更新时间统计于 **2026-11-20**。
+
+### 教程 / 课程 / 输入文件
+
+| 仓库 | ⭐ | 许可证 | 最近更新 | 说明 |
+|---|---:|---|---|---|
+| [QEF/q-e](https://github.com/QEF/q-e) | 706 | GPL-2.0 | 2026-07-09 | 官方源码的 GitHub 镜像（开发与 issue 在 GitLab）；PW/examples、PHonon/examples、EPW/examples 是最权威的输入示例。 |
+| [pranabdas/espresso](https://github.com/pranabdas/espresso) | 204 | 未声明 | 2026-11-09 | 配套网站从安装讲到 EPW 全流程，附 Jupyter 绘图，已用新 HUBBARD 语法，入门首选。 |
+| [quantumNerd/Quantum-Espresso-Tutorial-2019-Projects](https://github.com/quantumNerd/Quantum-Espresso-Tutorial-2019-Projects) | 252 | 未声明 | 2020-07-31 | YouTube 系列视频的输入输出；DFT+U 为 7.1 以前的旧语法，需对照新版改写。 |
+| [nguyen-group/QE-SSP](https://github.com/nguyen-group/QE-SSP) | 98 | 未声明 | 2026-07-07 | 《Quantum ESPRESSO Course for Solid-State Physics》配套算例：石墨烯、MoS2、双层石墨烯，覆盖收敛测试到电声耦合。 |
+| [ImperialCollegeLondon/MSE404-MM](https://github.com/ImperialCollegeLondon/MSE404-MM) | 18 | CC-BY-NC-SA-4.0 | 2026-11-17 | 帝国理工 9 个 QE 实验课，持续维护；非商业许可，只链接不转载。 |
+| [materialscloud-org/QuantumESPRESSO-school-2023](https://github.com/materialscloud-org/QuantumESPRESSO-school-2023) | 20 | 未声明 | 2023-08-28 | 高级 QE 学校上机材料：DFT+U+V、hp.x、Koopmans、AiiDA。 |
+| [materialscloud-org/hubbard-koopmans-2022](https://github.com/materialscloud-org/hubbard-koopmans-2022) | 25 | 未声明 | 2022-11-10 | 2022 版 Hubbard/Koopmans 教程。 |
+| [AlexanderKvashnin/QE_tutorial](https://github.com/AlexanderKvashnin/QE_tutorial) | 2 | 未声明 | 2026-09-17 | Skoltech 课程实验：优化、DOS、能带、声子、弹性。 |
+| [marcobn/QETutorials](https://github.com/marcobn/QETutorials) | 30 | 未声明 | 2022-08-18 | PAOFLOW 作者整理的 QE 教程集。 |
+| [jkitchin/dft-book-espresso](https://github.com/jkitchin/dft-book-espresso) | 49 | 未声明 | 2020-03-23 | CMU dft-book 的 QE 版，用 ASE 驱动表面、吸附与 EOS 计算。 |
+| [yyyu200/DFTbook](https://github.com/yyyu200/DFTbook) | 15 | other | 2024-05-17 | 以 QE 为例的中文 DFT 入门书。 |
+| [Waranchit-TOTO/LOBSTER-Quantum-ESPRESSO-Tutorial](https://github.com/Waranchit-TOTO/LOBSTER-Quantum-ESPRESSO-Tutorial) | 0 | 未声明 | 2025-08-28 | QE + LOBSTER 的 COHP 成键分析示例。 |
+| [sebranchett/MoS2-QE-Yambo-pnas](https://github.com/sebranchett/MoS2-QE-Yambo-pnas) | 0 | MIT | 2026-09-15 | 在集群上运行 MoS2 的 QE + Yambo 计算的作业脚本示例。 |
+| [paradimdata/nsf_2d_workshop_2018](https://github.com/paradimdata/nsf_2d_workshop_2018) | 2 | MIT | 2022-12-10 | PARADIM/NIST 二维材料数据培训文件；是唯一与 Cornell PARADIM 相关的 GitHub 仓库，但不是 QE 教程。 |
+
+### 工具 / 软件包
+
+| 仓库 | ⭐ | 许可证 | 最近更新 | 说明 |
+|---|---:|---|---|---|
+| [aiidateam/aiida-quantumespresso](https://github.com/aiidateam/aiida-quantumespresso) | 94 | MIT | 2026-11-18 | AiiDA 的 QE 插件：PwBaseWorkChain 自动纠错重启，以及能带、声子等工作流。 |
+| [aiidalab/aiidalab-qe](https://github.com/aiidalab/aiidalab-qe) | 35 | MIT | 2026-11-20 | 浏览器中的 QE 图形工作流（结构→弛豫→能带/PDOS），适合教学。 |
+| [aiidateam/qe-tools](https://github.com/aiidateam/qe-tools) | 43 | MIT | 2026-05-29 | 纯 Python 解析 pw.x/cp.x 的输入与输出。 |
+| [QEF/qeschema](https://github.com/QEF/qeschema) | 17 | other | 2024-05-29 | 官方 XML Schema 与读取 data-file-schema.xml 的 Python 库。 |
+| [QEF/postqe](https://github.com/QEF/postqe) | 19 | LGPL-2.1 | 2023-08-10 | 官方 Python 后处理（EOS、能带、DOS、电荷密度）。 |
+| [Griffin-Group/pymatgen-io-espresso](https://github.com/Griffin-Group/pymatgen-io-espresso) | 34 | MIT | 2024-11-30 | 把 QE 的 XML 输出转成类似 Vasprun 的 pymatgen 对象。 |
+| [vossjo/ase-espresso](https://github.com/vossjo/ase-espresso) | 70 | GPL-3.0 | 2020-02-22 | 旧版 ASE–QE 接口，已停更；新项目请用 ASE 自带的 Espresso 计算器。 |
+| [dalcorso/thermo_pw](https://github.com/dalcorso/thermo_pw) | 65 | GPL-2.0 | 2026-10-23 | 基于 QE 的准谐近似热力学、弹性常数与自动绘图。 |
+| [dalcorso/pslibrary](https://github.com/dalcorso/pslibrary) | 108 | GPL-2.0 | 2022-09-16 | 用 ld1.x 生成超软/PAW 赝势的输入集。 |
+| [oncvpsp/oncvpsp](https://github.com/oncvpsp/oncvpsp) | 41 | GPL-3.0 | 2026-05-14 | ONCV 模守恒赝势生成程序。 |
+| [abinit/pseudo_dojo](https://github.com/abinit/pseudo_dojo) | 55 | other | 2023-11-08 | PseudoDojo 赝势的生成与验证框架。 |
+| [aiidateam/aiida-pseudo](https://github.com/aiidateam/aiida-pseudo) | 7 | MIT | 2026-11-03 | 一键安装 SSSP/PseudoDojo 赝势族并给出推荐截断能。 |
+| [MineralsCloud/Express.jl](https://github.com/MineralsCloud/Express.jl) | 29 | GPL-3.0 | 2026-06-19 | Julia 编写的 EOS/声子/QHA 工作流，后端为 QE。 |
+| [janberges/elphmod](https://github.com/janberges/elphmod) | 41 | GPL-3.0 | 2026-11-18 | 读取 QE/EPW 数据构建电声耦合模型。 |
+| [yambo-code/yambo](https://github.com/yambo-code/yambo) | 138 | GPL-2.0 | 2026-11-12 | 基于 QE save 目录的 GW/BSE 激发态程序。 |
+| [yambo-code/yambopy](https://github.com/yambo-code/yambopy) | 22 | GPL-2.0 | 2026-11-19 | QE + Yambo 计算的管理与绘图。 |
+| [band-unfolding/bandup](https://github.com/band-unfolding/bandup) | 108 | GPL-3.0 | 2021-04-13 | 超胞能带反折叠，支持 QE。 |
+| [dceresoli/qe-gipaw](https://github.com/dceresoli/qe-gipaw) | 40 | GPL-2.0 | 2026-09-24 | GIPAW 方法计算 NMR 化学位移与 EPR g 张量。 |
+| [epfl-theos/koopmans](https://github.com/epfl-theos/koopmans) | 18 | GPL-2.0 | 2026-07-09 | 基于 QE 的 Koopmans 泛函工作流（能带与能级对齐）。 |
+| [SSCHAcode/python-sscha](https://github.com/SSCHAcode/python-sscha) | 86 | GPL-3.0 | 2026-10-05 | 随机自洽谐波近似（SSCHA）计算非谐声子。 |
+| [yyyu200/QEbandplot](https://github.com/yyyu200/QEbandplot) | 22 | 未声明 | 2024-05-17 | 读取 bands.x 输出画能带。 |
+| [shubics/QEPlotter](https://github.com/shubics/QEPlotter) | 9 | MIT | 2026-08-11 | 画能带、PDOS 与 fatband，自动识别带隙。 |
+| [pierrehirel/atomsk](https://github.com/pierrehirel/atomsk) | 260 | GPL-3.0 | 2026-11-12 | 建超胞与结构格式转换，可写 pw.x 输入。 |
+
+pymatgen（`pymatgen.io.pwscf`）、phonopy（`--pwscf` 有限位移）、phono3py、seekpath、spglib、Wannier90、wannier_tools、pwtools、xconfigure 也支持 QE 或常与 QE 配合使用，见上文 [VASP](#vasp)、[CP2K](#cp2k) 与 [通用工具](#general) 各节。
+
+### 课程与讲义
+
+| 课程 | 机构 | 说明 | 链接 |
+|---|---|---|---|
+| PARADIM Summer School 2016: Introduction to DFT for Experimentalists | Cornell PARADIM（Giustino） | pw.x/ph.x 上机：平衡结构、弹性常数、声子色散、能带与 KS 波函数；基于 QE 5.x/6.x 与 LDA，编译与赝势部分已过时 | [paradim.org/cu_ss_2016](https://www.paradim.org/cu_ss_2016) |
+| PARADIM Summer School 2018 | Cornell PARADIM（Giustino、Pamuk） | Si、Cl2、金刚石、GaAs 的弹性、声子、LO-TO、介电与 UV-Vis，每讲有视频 | [paradim.org/cu_ss_2018](https://www.paradim.org/cu_ss_2018) |
+| PARADIM Computational Tutorials | Cornell PARADIM Toolbox | QE 配置、输入与收敛参数、平衡结构、弹性常数、声子、能带；另有 Yambo GW/BSE 系列 | [paradim.org/toolbox/computation/tutorials](https://www.paradim.org/toolbox/computation/tutorials) |
+| PARADIM 旧站 Toolbox Tutorials | Cornell PARADIM | QE 5.4.0 下载编译（已过时）与 2016 完整教程 | [sites.coecis.cornell.edu/paradim](https://sites.coecis.cornell.edu/paradim/toolbox/tutorials/) |
+| Hands-on tutorial of first-principles calculations | Cornell PARADIM（Pamuk，2021 暑校衍生） | QE 6.8 安装、LDA 赝势、截断能/k 点收敛、晶格常数（PDF） | [indico.truba.gov.tr](https://indico.truba.gov.tr/event/47/contributions/427/attachments/110/269/Hands-onTutorial_DFT_BP.pdf) |
+| PARADIM Summer School 2023 | Cornell PARADIM（Arias、Pamuk、Giustino） | 理论讲座；上机使用 JDFTx，不是 QE | [paradim.org/2023_DFT_SS](https://www.paradim.org/2023_DFT_SS) |
+| Practical DFT mini-course | Cornell Physics（Arias） | 自己动手写平面波 DFT，理论部分可作参考，与 QE 无直接关系 | [jdftx.org/PracticalDFT.html](http://jdftx.org/PracticalDFT.html) |
+| MSE404-MM Modelling Materials with DFT | Imperial College London | 9 个 QE 实验：输入输出、收敛、能带、金属/DOS、自旋、优化、声子、有限温度；持续维护 | [imperialcollegelondon.github.io/MSE404-MM](https://imperialcollegelondon.github.io/MSE404-MM/) |
+| Computational Materials Physics | Ghent University（Cottenier） | 零基础 DFT 概念在线课，练习用 QE | [compmatphys.org](https://www.compmatphys.org) |
+| MaX e-School 2021 | ICTP / MaX / QEF | 两周 QE 课程与视频 | [indico.ictp.it/event/9616](https://indico.ictp.it/event/9616/) |
+| Advanced QE School 2023（Hubbard & Koopmans） | EPFL THEOS / Materials Cloud | 杂化泛函、Wannier90、DFPT、DFT+U+V、hp.x、Koopmans、AiiDA | [QuantumESPRESSO-school-2023](https://github.com/materialscloud-org/QuantumESPRESSO-school-2023) |
+| Efficient materials modelling on HPC | ENCCS / MaX | -nk/-nd/-nt 并行、GPU、Yambo | [enccs.github.io](https://enccs.github.io/efficient-materials-modelling-on-hpc/) |
+| EPW School / Tutorials | EPW Collaboration | 电声耦合、迁移率、Eliashberg 超导 | [docs.epw-code.org](https://docs.epw-code.org/doc/Tutorial.html) |
+| Wannier90 tutorials | Wannier90 developers | pw2wannier90、最大局域 Wannier 函数、插值能带 | [wannier.org/support](https://wannier.org/support/) |
+| MIT 3.320 (2005) | MIT OpenCourseWare | PWscf 收敛与晶格常数（QE 2.x，仅作历史参考） | [ocw.mit.edu](https://ocw.mit.edu/courses/3-320-atomistic-computer-modeling-of-materials-sma-5107-spring-2005/) |
+| dftqe | nanoHUB（Purdue） | 在浏览器中运行 QE | [nanohub.org/resources/dftqe](https://nanohub.org/resources/dftqe) |
+
+<a id="enzyme"></a>
+
+## 酶催化与多尺度模拟（Enzyme catalysis & multiscale modelling）
+
+本节对应本仓库的 [计算案例：hCA II 反应机理的 QM 簇模型研究](../Cases/01-enzyme-carbonic-anhydrase-ii-qm-cluster/README.md)，收录结构准备、簇模型构建与 QM/MM 相关的仓库和教程。统计时间 **2026-11-20**。
+
+### 仓库
+
+| 仓库 | ⭐ | 许可证 | 最近更新 | 说明 |
+|---|---:|---|---|---|
+| [openmm/pdbfixer](https://github.com/openmm/pdbfixer) | 688 | other | 2026-11-16 | 补全 PDB 结构中缺失的原子与残基、去除杂原子，常作为结构准备的第一步。 |
+| [jensengroup/propka](https://github.com/jensengroup/propka) | 404 | LGPL-2.1 | 2026-07-31 | PROPKA3：由三维结构预测蛋白中可电离基团的 pKa，用于判断质子化状态。 |
+| [Electrostatics/pdb2pqr](https://github.com/Electrostatics/pdb2pqr) | 177 | other | 2026-11-05 | PDB2PQR：确定质子化状态、补全原子并分配电荷与半径，可调用 PROPKA。 |
+| [natedey/RINRUS](https://github.com/natedey/RINRUS) | 16 | MIT | 2026-07-21 | 按残基相互作用网络系统地挑选残基、构建 QM 簇模型。 |
+| [CCPBioSim/qmmm-workshop](https://github.com/CCPBioSim/qmmm-workshop) | 70 | MIT | 2026-11-19 | CCPBioSim 酶 QM/MM 动手教程的构建与材料。 |
+| [RagnarB83/ash](https://github.com/RagnarB83/ash) | 137 | GPL-2.0 | 2026-11-20 | Python 多尺度计算环境，统一调度 ORCA/xTB/OpenMM 等做 QM/MM 与蛋白环境计算。 |
+| [arvpinto/enzyme_neb_cp2k](https://github.com/arvpinto/enzyme_neb_cp2k) | 10 | CC0-1.0 | 2026-11-13 | 酶反应 QM/MM 过渡态教程（CP2K）：CI-NEB、Dimer 与频率验证。 |
+| [grimme-lab/xtb](https://github.com/grimme-lab/xtb) | 888 | LGPL-3.0 | 2026-11-20 | GFN2-xTB 半经验程序，用于簇模型预优化、约束扫描与 ALPB 隐式溶剂。 |
+| [crest-lab/crest](https://github.com/crest-lab/crest) | 369 | LGPL-3.0 | 2026-06-16 | 基于 xTB 的构象与质子化态搜索。 |
+| [jcerezochem/traj2oniom](https://github.com/jcerezochem/traj2oniom) | 1 | MIT | 2024-04-30 | 从 MD 轨迹与拓扑生成 Gaussian ONIOM（QM/MM）输入。 |
+
+### 教程与综述
+
+| 资源 | 说明 | 链接 |
+|---|---|---|
+| ORCA 6.0 tutorials | ORCA 官方教程：优化、过渡态、溶剂模型等 | [faccts.de/docs/orca/6.0/tutorials](https://www.faccts.de/docs/orca/6.0/tutorials/) |
+| AmberTools MCPB.py 教程 | 金属位点力场参数化，用于 QM/MM 或 ONIOM 的 MM 部分 | [ambermd.org tutorial 20](https://ambermd.org/tutorials/advanced/tutorial20/mcpbpy.php) |
+| Sobereva：要善用簇模型 | 中文博文，讨论簇模型与 ONIOM 的取舍 | [sobereva.com/597](http://sobereva.com/597) |
+| F. Himo, *J. Am. Chem. Soc.* 2017, 139, 6780 | QM 簇模型方法的经典综述 | [DOI: 10.1021/jacs.7b02671](https://doi.org/10.1021/jacs.7b02671) |
+| P. E. M. Siegbahn, F. Himo, *WIREs Comput. Mol. Sci.* 2011, 1, 323 | 簇模型方法学综述 | [DOI: 10.1002/wcms.13](https://doi.org/10.1002/wcms.13) |
+| RINRUS 综述（*WIREs Comput. Mol. Sci.* 2026） | 按残基相互作用网络构建簇模型 | [DOI: 10.1002/wcms.70078](https://doi.org/10.1002/wcms.70078) |
+| PROPKA3（*J. Chem. Theory Comput.* 2011） | pKa 预测方法 | [DOI: 10.1021/ct100578z](https://doi.org/10.1021/ct100578z) |
+
+本仓库内相关章节：[Gaussian 第15章 ONIOM](../Gaussian/tutorials/15-oniom.md)、[CP2K 第16章 QM/MM 与 xTB/DFTB](../CP2K/tutorials/16-qmmm-xtb.md)、[计算案例总目录](../Cases/README.md)。
+
 <a id="official-docs"></a>
 
 ## 官方文档与权威资料（Official documentation）
@@ -583,6 +694,23 @@
 - [ASE OpenMX calculator source (GitLab)](https://gitlab.com/ase/ase/-/tree/master/ase/calculators/openmx)
 - [pranabdas OpenMX tutorial site](https://pranabdas.github.io/openmx/)
 - [Intel oneMKL Link Line Advisor (手册推荐用于 LIB 行)](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html)
+
+### Quantum ESPRESSO
+
+- [QE 官网](https://www.quantum-espresso.org) / [Learn 页（官方推荐课程与学校）](https://www.quantum-espresso.org/learn/)
+- [INPUT_PW（pw.x 输入说明）](https://www.quantum-espresso.org/Doc/INPUT_PW.html)
+- [INPUT_PH（ph.x）](https://www.quantum-espresso.org/Doc/INPUT_PH.html) / [INPUT_Q2R](https://www.quantum-espresso.org/Doc/INPUT_Q2R.html) / [INPUT_MATDYN](https://www.quantum-espresso.org/Doc/INPUT_MATDYN.html) / [INPUT_DYNMAT](https://www.quantum-espresso.org/Doc/INPUT_DYNMAT.html)
+- [INPUT_PP（pp.x）](https://www.quantum-espresso.org/Doc/INPUT_PP.html) / [INPUT_PROJWFC](https://www.quantum-espresso.org/Doc/INPUT_PROJWFC.html) / [INPUT_DOS](https://www.quantum-espresso.org/Doc/INPUT_DOS.html) / [INPUT_BANDS](https://www.quantum-espresso.org/Doc/INPUT_BANDS.html)
+- [INPUT_NEB](https://www.quantum-espresso.org/Doc/INPUT_NEB.html) / [INPUT_HP](https://www.quantum-espresso.org/Doc/INPUT_HP.html) / [INPUT_PW2WANNIER90](https://www.quantum-espresso.org/Doc/INPUT_PW2WANNIER90.html) / [INPUT_CP](https://www.quantum-espresso.org/Doc/INPUT_CP.html) / [INPUT_LD1](https://www.quantum-espresso.org/Doc/INPUT_LD1.html)
+- [QE 用户手册（编译、并行、CMake、GPU）](https://www.quantum-espresso.org/Doc/user_guide/)
+- [PWscf User's Guide](https://www.quantum-espresso.org/Doc/pw_user_guide/)
+- [New DFT+Hubbard input（HUBBARD 卡说明 PDF）](https://www.quantum-espresso.org/Doc/user_guide_PDF/Hubbard_input.pdf)
+- [QE 7.6 Release](https://gitlab.com/QEF/q-e/-/releases/qe-7.6) / [release-notes（develop 分支）](https://gitlab.com/QEF/q-e/-/blob/develop/Doc/release-notes)
+- [QE GitLab 主仓库](https://gitlab.com/QEF/q-e) / [GitLab Wiki（CMake/GPU）](https://gitlab.com/QEF/q-e/-/wikis/home)
+- [QE users 邮件列表](https://lists.quantum-espresso.org/mailman/listinfo/users)
+- 赝势：[官方赝势页](https://pseudopotentials.quantum-espresso.org/) / [SSSP 1.3 Efficiency](https://www.materialscloud.org/discover/sssp/table/efficiency) / [PseudoDojo](https://www.pseudo-dojo.org/) / [SG15 ONCV](http://www.quantum-simulation.org/potentials/sg15_oncv/)
+- 工具：[SeeK-path 在线](https://www.materialscloud.org/work/tools/seekpath) / [Materials Cloud QE 输入生成器](https://tools.materialscloud.org/qeinputgenerator/)
+- 生态：[EPW 文档](https://docs.epw-code.org/) / [Wannier90 用户指南](https://wannier90.readthedocs.io) / [phonopy QE 接口](https://phonopy.github.io/phonopy/qe.html) / [Yambo wiki](https://www.yambo-code.eu/wiki) / [aiida-quantumespresso 文档](https://aiida-quantumespresso.readthedocs.io)
 
 ### 通用工具与学习资源
 

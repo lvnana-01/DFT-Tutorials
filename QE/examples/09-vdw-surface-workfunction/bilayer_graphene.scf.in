@@ -1,0 +1,41 @@
+&CONTROL
+! AB-stacked bilayer graphene with the 2D Coulomb cutoff
+! (assume_isolated = '2D'), useful for gated / charged 2D systems and DFPT.
+! The cell length along z should exceed twice the thickness of the
+! 2D material (INPUT_PW); a minimum of 20 bohr is imposed by the code.
+! Pseudopotential: C.pbe-n-kjpaw_psl.1.0.0.UPF (SSSP 1.3 efficiency)
+  calculation = 'scf'
+  prefix      = 'blg'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tprnfor     = .true.
+/
+&SYSTEM
+  ibrav       = 4
+  A           = 2.464
+  C           = 25.0
+  nat         = 4
+  ntyp        = 1
+  ecutwfc     = 50.0
+  ecutrho     = 400.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.01
+  assume_isolated = '2D'
+  vdw_corr    = 'grimme-d3'
+  dftd3_version = 4
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  C  12.011  C.pbe-n-kjpaw_psl.1.0.0.UPF
+! layers at z = 10.00 and 13.35 Angstrom (AB stacking)
+ATOMIC_POSITIONS angstrom
+  C  0.000000  0.000000  10.000000
+  C  1.232000  0.711295  10.000000
+  C  1.232000  0.711295  13.350000
+  C  2.464000  1.422590  13.350000
+K_POINTS automatic
+  18 18 1 0 0 0

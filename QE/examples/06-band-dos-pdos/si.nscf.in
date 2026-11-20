@@ -1,0 +1,29 @@
+&CONTROL
+! Step 4: non-self-consistent run on a denser uniform grid for DOS/PDOS.
+! occupations = 'tetrahedra_opt' (Kawamura) gives smooth DOS without smearing.
+  calculation = 'nscf'
+  prefix      = 'si'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav     = 2
+  celldm(1) = 10.26
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 40.0
+  ecutrho   = 320.0
+  occupations = 'tetrahedra_opt'
+  nbnd      = 12
+/
+&ELECTRONS
+  conv_thr       = 1.0d-10
+  diago_full_acc = .true.
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  16 16 16 0 0 0

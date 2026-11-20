@@ -1,0 +1,11 @@
+&INPUTHP
+! Linear-response (DFPT) Hubbard U for NiO, step 3 of 3.
+! prefix/outdir must match nio.lr_step2.in. The q mesh is the DFPT
+! analogue of the supercell size in the old finite-difference approach;
+! converge U with respect to nq1..nq3 (and the k mesh of the scf).
+  prefix       = 'nio_lr'
+  outdir       = './tmp_lr'
+  nq1 = 2, nq2 = 2, nq3 = 2
+  conv_thr_chi = 1.0d-8
+  iverbosity   = 2
+/

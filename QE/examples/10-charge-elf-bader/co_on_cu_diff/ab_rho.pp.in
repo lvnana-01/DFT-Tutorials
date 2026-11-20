@@ -1,0 +1,8 @@
+&INPUTPP
+! Empty INPUTPP: re-use ab.rho.pp written by rho_ab.pp.in and only write the
+! cube file. This valence density is the "chargefile" for the Bader program.
+/
+&PLOT
+  nfile = 1, filepp(1) = 'ab.rho.pp'
+  iflag = 3, output_format = 6, fileout = 'ab_rho.cube'
+/

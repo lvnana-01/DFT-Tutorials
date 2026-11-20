@@ -1,0 +1,9 @@
+Al phonons on a 4x4x4 q-point grid
+&INPUTPH
+  prefix = 'al'
+  outdir = './tmp'
+  tr2_ph = 1.0d-16
+  fildyn = 'al.dyn'
+  ldisp  = .true.
+  nq1 = 4, nq2 = 4, nq3 = 4
+/

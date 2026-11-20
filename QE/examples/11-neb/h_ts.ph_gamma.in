@@ -1,0 +1,10 @@
+Gamma-point modes of H only at the NEB saddle point (nat_todo approximation)
+&INPUTPH
+  prefix   = 'h_ts'
+  outdir   = './tmp'
+  tr2_ph   = 1.0d-14
+  fildyn   = 'h_ts.dyn'
+  nat_todo = 1
+/
+0.0 0.0 0.0
+13

@@ -1,0 +1,8 @@
+&INPUT
+! Diagonalize the partial (H-only) dynamical matrix written by ph.x.
+! remove_interaction_blocks removes the coupling to the non-displaced atoms.
+  fildyn = 'h_ts.dyn'
+  asr    = 'no'
+  remove_interaction_blocks = .true.
+  filout = 'h_ts.modes'     ! frequencies/modes go here (default 'dynmat.out')
+/

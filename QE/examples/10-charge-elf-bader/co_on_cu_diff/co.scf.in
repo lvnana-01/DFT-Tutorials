@@ -1,0 +1,36 @@
+&CONTROL
+! Chapter 10: "B" = CO alone, in exactly the same cell and at exactly the same
+! positions as in ab.scf.in. Same ecutwfc/ecutrho -> same FFT grid.
+! Smearing is kept so that all three runs use identical &SYSTEM settings.
+  calculation = 'scf'
+  prefix      = 'co'
+  outdir      = './tmp'
+  pseudo_dir  = '../pseudo'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 2
+  ntyp        = 2
+  ecutwfc     = 90.0
+  ecutrho     = 720.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-8
+  mixing_beta = 0.3
+  mixing_mode = 'local-TF'
+/
+ATOMIC_SPECIES
+  C   12.011  C.pbe-n-kjpaw_psl.1.0.0.UPF
+  O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  5.13360  0.00000   0.00000
+  2.56680  4.44582   0.00000
+  0.00000  0.00000  22.00000
+ATOMIC_POSITIONS angstrom
+  C   2.56680  1.48194  8.04156
+  O   2.56680  1.48194  9.19156
+K_POINTS automatic
+  6 6 1 0 0 0

@@ -1,0 +1,5 @@
+&INPUT
+  fildyn = 'gaas.dyn'
+  zasr   = 'crystal'     ! ASR on the Born effective charges
+  flfrc  = 'gaas.fc'
+/

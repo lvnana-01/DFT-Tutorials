@@ -1,0 +1,8 @@
+&BANDS
+! bands.x post-processing: writes gaas_soc.bands.dat(.gnu) in eV.
+! lsigma(3) = .true. writes <sigma_z> for every spinor state.
+  prefix   = 'gaas_soc'
+  outdir   = './tmp'
+  filband  = 'gaas_soc.bands.dat'
+  lsigma(3) = .true.
+/

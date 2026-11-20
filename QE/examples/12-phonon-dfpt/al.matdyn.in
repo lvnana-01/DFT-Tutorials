@@ -1,0 +1,14 @@
+&INPUT
+! Phonon dispersion of fcc Al along Gamma-X-W-X'-K-Gamma-L (2pi/a units).
+  asr            = 'simple'
+  flfrc          = 'al444.fc'
+  flfrq          = 'al.freq'
+  q_in_band_form = .true.
+/
+6
+  0.000  0.000  0.000  40
+  1.000  0.000  0.000  20
+  1.000  0.500  0.000  20
+  1.000  1.000  0.000  60
+  0.000  0.000  0.000  40
+  0.500  0.500  0.500   1

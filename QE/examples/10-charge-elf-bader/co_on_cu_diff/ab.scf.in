@@ -1,0 +1,53 @@
+&CONTROL
+! Chapter 10: "AB" = CO adsorbed on top of a Cu(111) 2x2 three-layer slab.
+! Geometry is an UNRELAXED starting guess: relax it first (Chapters 5 and 9),
+! then paste the relaxed coordinates here AND into slab.scf.in / co.scf.in.
+! Pseudopotentials (SSSP 1.3 PBE efficiency, put in ../pseudo):
+!   Cu.paw.z_11.ld1.psl.v1.0.0-low.upf  (hint 90 / 720 Ry)
+!   C.pbe-n-kjpaw_psl.1.0.0.UPF          (hint 45 / 360 Ry)
+!   O.pbe-n-kjpaw_psl.0.1.UPF            (hint 50 / 400 Ry)
+  calculation = 'scf'
+  prefix      = 'ab'
+  outdir      = './tmp'
+  pseudo_dir  = '../pseudo'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 14
+  ntyp        = 3
+  ecutwfc     = 90.0         ! max SSSP hint among Cu, C, O
+  ecutrho     = 720.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-8
+  mixing_beta = 0.3
+  mixing_mode = 'local-TF'   ! helps slabs with vacuum
+/
+ATOMIC_SPECIES
+  Cu  63.546  Cu.paw.z_11.ld1.psl.v1.0.0-low.upf
+  C   12.011  C.pbe-n-kjpaw_psl.1.0.0.UPF
+  O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  5.13360  0.00000   0.00000
+  2.56680  4.44582   0.00000
+  0.00000  0.00000  22.00000
+ATOMIC_POSITIONS angstrom
+  Cu  0.00000  0.00000  2.00000
+  Cu  1.28340  2.22291  2.00000
+  Cu  2.56680  0.00000  2.00000
+  Cu  3.85020  2.22291  2.00000
+  Cu  1.28340  0.74097  4.09578
+  Cu  2.56680  2.96388  4.09578
+  Cu  3.85020  0.74097  4.09578
+  Cu  5.13360  2.96388  4.09578
+  Cu  2.56680  1.48194  6.19156
+  Cu  3.85020  3.70485  6.19156
+  Cu  5.13360  1.48194  6.19156
+  Cu  6.41699  3.70485  6.19156
+  C   2.56680  1.48194  8.04156
+  O   2.56680  1.48194  9.19156
+K_POINTS automatic
+  6 6 1 0 0 0

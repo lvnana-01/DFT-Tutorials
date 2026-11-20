@@ -1,0 +1,33 @@
+! Step 1 of the ph.x electron-phonon route for fcc Al.
+! Dense-k SCF that writes the "a2Fsave" file (la2F = .true.). ph.x later uses
+! these eigenvalues to interpolate the double-delta Fermi-surface average
+! (electron_phonon = 'interpolated').
+! Pseudopotential: PseudoDojo nc-sr-05 PBE standard, Al.upf (norm-conserving).
+! Lattice parameter: replace celldm(1) by your own relaxed PBE value (chapter 5).
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'al'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 7.63          ! Bohr, about 4.04 Angstrom; use your relaxed value
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 40.0          ! Ry; check against the PseudoDojo hints and chapter 4
+  occupations = 'smearing'
+  smearing    = 'mv'          ! Marzari-Vanderbilt cold smearing
+  degauss     = 0.02          ! Ry
+  la2F        = .true.        ! write a2Fsave for the el-ph Fermi-surface sum
+/
+&ELECTRONS
+  conv_thr    = 1.0d-12
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.upf
+ATOMIC_POSITIONS crystal
+  Al  0.0  0.0  0.0
+K_POINTS automatic
+  24 24 24  0 0 0

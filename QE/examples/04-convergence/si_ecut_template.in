@@ -1,0 +1,35 @@
+&CONTROL
+! Si (diamond) template for the ecutwfc / ecutrho convergence scan.
+! Placeholders replaced by run_conv.sh (or QE/scripts/qe_conv_test.sh):
+!   @ECUT@     -> ecutwfc in Ry
+!   @ECUTRHO@  -> ecutrho in Ry (dual * ecutwfc)
+!   @K@        -> k-point grid "N N N"
+! Pseudopotential: SSSP 1.3 PBE efficiency, Si.pbe-n-rrkjus_psl.1.0.0.UPF
+! (ultrasoft, so a dual of 8 is used by default).
+  calculation = 'scf'
+  prefix      = 'si'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tprnfor     = .true.
+  tstress     = .true.
+/
+&SYSTEM
+  ibrav     = 2
+  celldm(1) = 10.26        ! lattice parameter a in Bohr (about 5.43 Angstrom)
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = @ECUT@
+  ecutrho   = @ECUTRHO@
+  occupations = 'fixed'    ! Si is an insulator: no smearing needed
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10    ! 2 atoms; much tighter than the 1 meV/atom target
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  @K@ 0 0 0

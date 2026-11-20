@@ -1,0 +1,8 @@
+%nprocshared=16
+%mem=24GB
+%oldchk=ts_attack.chk
+%chk=irc_attack.chk
+#p B3LYP/Def2SVP EmpiricalDispersion=GD3BJ SCRF=(CPCM,Solvent=Water,Read) IRC=(RCFC,MaxPoints=40,StepSize=8,MaxCycle=50) Geom=AllCheck Guess=Read
+
+Eps=4.0
+

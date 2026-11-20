@@ -1,0 +1,23 @@
+# Relaxed surface scan O(OH-)...C(CO2), 2.80 -> 1.50 A in 14 points.
+# ORCA atom numbers are 0-based: O(OH-) = 1, C(CO2) = 51 for the default
+# cut_cluster.py model with CO2 (check build_report.txt).
+# orca_opt_reactant.xyz is the final geometry written by orca_opt_reactant.inp.
+! B3LYP D3BJ def2-SVP def2/J RIJCOSX CPCM(water) TightSCF Opt
+
+%pal nprocs 16 end
+%maxcore 3000
+
+%cpcm
+  epsilon 4.0
+end
+
+%geom
+  Scan
+    B 1 51 = 2.80, 1.50, 14
+  end
+  Constraints
+@ORCA_FIX@
+  end
+end
+
+* xyzfile 1 1 orca_opt_reactant.xyz

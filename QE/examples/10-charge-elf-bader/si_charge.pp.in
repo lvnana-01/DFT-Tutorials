@@ -1,0 +1,15 @@
+&INPUTPP
+! Valence (pseudo-)charge density of Si written as a Gaussian cube file.
+! Step 1: extract rho into filplot; step 2: write the full FFT grid (iflag=3).
+  prefix   = 'si'
+  outdir   = './tmp'
+  filplot  = 'si.rho.pp'
+  plot_num = 0
+/
+&PLOT
+  nfile         = 1
+  filepp(1)     = 'si.rho.pp'
+  iflag         = 3
+  output_format = 6             ! 6 = Gaussian cube, 5 = XCrySDen xsf
+  fileout       = 'si_rho.cube'
+/

@@ -1,0 +1,34 @@
+! GaAs (zincblende), LDA, norm-conserving PseudoDojo pseudopotentials.
+! Ground state for DFPT: dielectric tensor, Born charges, Raman tensor.
+! NC + LDA is REQUIRED if lraman=.true. in ph.x.
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'gaas'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  verbosity   = 'high'
+/
+&SYSTEM
+  ibrav     = 0
+  nat       = 2
+  ntyp      = 2
+  ecutwfc   = 80.0      ! start value from PseudoDojo hints (Ga: 40 Ha = 80 Ry); converge it
+  ecutrho   = 320.0     ! 4 x ecutwfc for norm-conserving pseudopotentials
+  ! occupations default = 'fixed' (insulator). Do NOT use smearing: epsil fails for metals.
+/
+&ELECTRONS
+  conv_thr    = 1.0d-12  ! tight SCF threshold before DFPT
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  Ga  69.723  Ga.upf
+  As  74.922  As.upf
+CELL_PARAMETERS angstrom
+  -2.8250   0.0000   2.8250
+   0.0000   2.8250   2.8250
+  -2.8250   2.8250   0.0000
+ATOMIC_POSITIONS crystal
+  Ga  0.00  0.00  0.00
+  As  0.25  0.25  0.25
+K_POINTS automatic
+  8 8 8 0 0 0

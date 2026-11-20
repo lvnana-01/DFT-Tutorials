@@ -1,0 +1,42 @@
+! EPW step 2: read the Wannier-space data (epwread) and solve the isotropic
+! Migdal-Eliashberg equations on the imaginary axis on fine grids.
+! a2f_iso = .true. computes alpha^2F on the fly (writes pb.a2f) without
+! writing the large prefix.ephmat directory.
+&INPUTEPW
+  prefix        = 'pb'
+  outdir        = './'
+  amass(1)      = 207.2
+  dvscf_dir     = './save'
+
+  elph          = .true.
+  epwwrite      = .false.
+  epwread       = .true.
+  kmaps         = .true.            ! required together with epwread for a restart
+  etf_mem       = 0
+  asr_typ       = 'crystal'
+
+  wannierize    = .false.
+  nbndsub       = 4
+  bands_skipped = 'exclude_bands = 1:5'
+
+  fsthick       = 0.2               ! eV, Fermi-surface window
+  degaussw      = 0.05              ! eV, electron smearing for the delta functions
+  degaussq      = 0.15              ! meV, phonon smearing for the q sum
+
+  eliashberg    = .true.
+  a2f_iso       = .true.
+  liso          = .true.            ! isotropic Migdal-Eliashberg
+  limag         = .true.            ! imaginary (Matsubara) axis
+  lpade         = .true.            ! Pade continuation to the real axis
+  nsiter        = 500
+  conv_thr_iaxis = 1.0d-4
+  wscut         = 0.1               ! eV, Matsubara frequency cutoff
+  muc           = 0.1               ! Coulomb pseudopotential mu*
+  temps         = 0.5 1.0 2.0 3.0 4.0 5.0 6.0   ! K
+
+  nk1 = 6, nk2 = 6, nk3 = 6
+  nq1 = 6, nq2 = 6, nq3 = 6
+  mp_mesh_k     = .true.
+  nkf1 = 24, nkf2 = 24, nkf3 = 24   ! fine k grid: converge (e.g. 24 -> 36 -> 48)
+  nqf1 = 12, nqf2 = 12, nqf3 = 12   ! fine q grid: nkf must be a multiple of nqf
+/

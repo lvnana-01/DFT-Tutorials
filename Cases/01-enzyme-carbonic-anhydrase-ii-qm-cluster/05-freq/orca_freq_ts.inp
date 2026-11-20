@@ -1,0 +1,20 @@
+# Stand-alone analytic frequency calculation (e.g. after a TS optimisation
+# that was run without Freq, or to re-check a structure). The cap atoms are
+# frozen during optimisation but NOT during the Hessian: expect a few small
+# imaginary or near-zero modes that involve the frozen atoms (see README).
+# QuasiRRHO true applies Grimme's quasi-RRHO entropy treatment (ORCA 6).
+! B3LYP D3BJ def2-SVP def2/J RIJCOSX CPCM(water) TightSCF AnFreq
+
+%pal nprocs 16 end
+%maxcore 3000
+
+%cpcm
+  epsilon 4.0
+end
+
+%freq
+  QuasiRRHO true
+  Temp 298.15
+end
+
+* xyzfile 1 1 orca_ts.xyz

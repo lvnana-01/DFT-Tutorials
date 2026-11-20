@@ -1,6 +1,6 @@
 # 第7章 DFT 理论速览、学习路线与资源汇总（含机器学习势前沿）（DFT Primer, Learning Path, Convergence Checklist, Resources and Machine-Learned Potentials）
 
-本章是整个仓库的“导航页”：先用最少的公式讲清密度泛函理论（DFT）、Kohn–Sham 方程、交换关联泛函（Jacob 阶梯）、平面波/高斯/数值原子轨道基组与赝势，再给出覆盖 VASP、Gaussian、CP2K、OpenMX 四个板块的学习顺序和 12 周学习计划。之后把四款软件的收敛测试（ENCUT、k 点、SIGMA、CUTOFF/REL_CUTOFF、scf.energycutoff、基组与积分格点）归纳成一张通用清单，并给出自动建目录、提交、收集、画图的模板。最后介绍机器学习势前沿（VASP MLFF、NEP/GPUMD、DeePMD-kit、MACE 与 MACE-MP 基础模型），汇总教材、课程、awesome 列表、官方论坛与中文社区，并说明引用规范和许可证注意事项（DFT tutorial roadmap, convergence tests, MLIP, learning resources）。
+本章是整个仓库的“导航页”：先用最少的公式讲清密度泛函理论（DFT）、Kohn–Sham 方程、交换关联泛函（Jacob 阶梯）、平面波/高斯/数值原子轨道基组与赝势，再给出覆盖 VASP、Gaussian、CP2K、OpenMX 四个板块（以及开源平面波程序 Quantum ESPRESSO 和“计算案例”板块）的学习顺序和 12 周学习计划。之后把四款软件的收敛测试（ENCUT、k 点、SIGMA、CUTOFF/REL_CUTOFF、scf.energycutoff、基组与积分格点）归纳成一张通用清单，并给出自动建目录、提交、收集、画图的模板。最后介绍机器学习势前沿（VASP MLFF、NEP/GPUMD、DeePMD-kit、MACE 与 MACE-MP 基础模型），汇总教材、课程、awesome 列表、官方论坛与中文社区，并说明引用规范和许可证注意事项（DFT tutorial roadmap, convergence tests, MLIP, learning resources）。
 
 > [!NOTE]
 > 本章不追求理论推导的完整性，目标是让你知道“每个输入参数背后对应哪一个近似”，以及“下一步该读哪一章”。严格的推导请看第 6.1 节列出的教材。配套示例：[07-convergence-templates](../examples/07-convergence-templates/README.md)（收敛测试模板）、[07-mlip-nep-mace](../examples/07-mlip-nep-mace/README.md)（机器学习势）、[07-learning-resources](../examples/07-learning-resources/README.md)（资源书签与学习打卡表）。
@@ -156,7 +156,7 @@ $$
                  本章第 4 节收敛清单 + 第 5 节机器学习势（VASP 第15章、Scripts/）
 ```
 
-各板块的完整章节列表见 [VASP 板块目录](../../VASP/README.md)、[Gaussian 板块目录](../../Gaussian/README.md)、[CP2K 板块目录](../../CP2K/README.md)、[OpenMX 板块目录](../../OpenMX/README.md)；机器学习势训练集与热输运脚本见 [Scripts/README.md](../../Scripts/README.md)；230 多个相关 GitHub 仓库的分类索引见 [Resources/github-repos.md](../../Resources/github-repos.md)。
+各板块的完整章节列表见 [VASP 板块目录](../../VASP/README.md)、[Gaussian 板块目录](../../Gaussian/README.md)、[CP2K 板块目录](../../CP2K/README.md)、[OpenMX 板块目录](../../OpenMX/README.md)、[Quantum ESPRESSO 板块目录](../../QE/README.md)（第 3.10 节）；串联多款软件的完整研究流程见 [计算案例](../../Cases/README.md)（第 3.11 节）；机器学习势训练集与热输运脚本见 [Scripts/README.md](../../Scripts/README.md)；230 多个相关 GitHub 仓库的分类索引见 [Resources/github-repos.md](../../Resources/github-repos.md)。
 
 ### 3.2 第 0 阶段：通用基础（所有人，约 1–2 周）
 
@@ -181,9 +181,11 @@ $$
 | 几百到上千原子的液体、界面、AIMD | CP2K | VASP + MLFF | GPW + OT 对大体系效率高 |
 | 非共线磁性、交换耦合、电子输运（NEGF） | OpenMX | VASP（磁性） | 数值原子轨道 + NEGF 一体化，开源 |
 | 大规模长时间 MD、热导率 | MLIP（NEP/GPUMD、DeePMD、MACE） | VASP MLFF | DFT 生成训练集，MLIP 跑生产 |
+| 没有 VASP 许可证的周期体系；DFPT 声子、电声耦合、Wannier 函数 | Quantum ESPRESSO | VASP、CP2K | 开源平面波赝势程序，ph.x/EPW/Wannier90 生态完整 |
+| 酶催化等生物大分子中的反应机理 | Gaussian/ORCA 簇模型（见[计算案例](../../Cases/README.md)） | CP2K QM/MM、Gaussian ONIOM | 簇模型便宜、可控，QM/MM 用来检验环境效应 |
 
 > [!TIP]
-> 许可证也是选型因素：VASP 和 Gaussian 是商业软件，需要课题组购买许可证；CP2K（GPL）和 OpenMX（GPL）免费开源。没有 VASP 许可证时，周期体系可以先用 CP2K 或 OpenMX 学会全部流程。
+> 许可证也是选型因素：VASP 和 Gaussian 是商业软件，需要课题组购买许可证；CP2K（GPL）和 OpenMX（GPL）免费开源。没有 VASP 许可证时，周期体系可以先用 [Quantum ESPRESSO](../../QE/README.md)（同为平面波赝势方法，概念与 VASP 一一对应）、CP2K 或 OpenMX 学会全部流程。
 
 ### 3.4 VASP 学习顺序
 
@@ -251,6 +253,24 @@ $$
 | 12 | 复现一篇文献中的关键图，整理成组会报告 | 可复现的计算目录（输入、脚本、版本记录） |
 
 可打印的打卡表见 [07-learning-resources/study_checklist.md](../examples/07-learning-resources/study_checklist.md)。
+
+### 3.10 Quantum ESPRESSO 学习顺序
+
+QE 是开源（GPL）的平面波赝势程序，概念与 VASP 一一对应（ecutwfc ↔ ENCUT、K_POINTS ↔ KPOINTS、UPF 赝势 ↔ POTCAR）。没有 VASP 许可证时，可以用 QE 替换第 3.9 节计划中的 VASP 部分；已经会 VASP 的读者可以直接从第4章开始，重点看第12章 DFPT 声子、第15章 Wannier90 和第16章 EPW。
+
+| 阶段 | 章节 |
+|---|---|
+| 入门 | [第1章 安装](../../QE/tutorials/01-install.md) → [第2章 pw.x 输入与第一个 SCF](../../QE/tutorials/02-input-anatomy.md) → [第3章 赝势选择](../../QE/tutorials/03-pseudopotentials.md) → [第4章 收敛测试](../../QE/tutorials/04-convergence.md) → [第5章 结构优化与状态方程](../../QE/tutorials/05-relax-eos.md) → [第6章 能带、DOS 与 PDOS](../../QE/tutorials/06-band-dos-pdos.md) |
+| 进阶 | [第7章 磁性与 SOC](../../QE/tutorials/07-magnetism-soc.md)、[第8章 DFT+U 与 hp.x](../../QE/tutorials/08-dftu-hp.md)、[第9章 范德华、表面与功函数](../../QE/tutorials/09-vdw-surface-workfunction.md)、[第10章 电荷与 Bader](../../QE/tutorials/10-charge-elf-bader.md)、[第11章 neb.x](../../QE/tutorials/11-neb.md) |
+| 专题 | [第12章 DFPT 声子](../../QE/tutorials/12-phonon-dfpt.md)、[第13章 介电/红外/拉曼](../../QE/tutorials/13-dielectric-ir-raman.md)、[第14章 杂化泛函与 meta-GGA](../../QE/tutorials/14-hybrid-metagga.md)、[第15章 Wannier90](../../QE/tutorials/15-wannier90.md)、[第16章 EPW 电声耦合](../../QE/tutorials/16-elph-epw.md)、[第17章 分子动力学](../../QE/tutorials/17-md-cp.md) |
+| 并行与排错 | [第18章 自动化、并行性能与报错排查](../../QE/tutorials/18-automation-parallel-troubleshooting.md) |
+
+> [!WARNING]
+> QE 7.1 起 DFT+U 改用 `HUBBARD` 卡，`lda_plus_u`、`Hubbard_U(i)` 等旧关键字会直接报错；网上大量 2022 年以前的教程照抄会出错，以 QE 板块第8章为准。
+
+### 3.11 计算案例：把技能串成完整研究
+
+学完某个软件板块的入门与进阶部分后，建议做一个[计算案例](../../Cases/README.md)，体验从原始结构到机理结论的全过程。目前的案例是 [hCA II 反应机理的 QM 簇模型研究](../../Cases/01-enzyme-carbonic-anhydrase-ii-qm-cluster/README.md)：PDB 结构处理、簇模型截取、xTB 预优化、DFT 优化、过渡态、IRC、热校正、高精度单点与能量剖面。它需要的前置章节是 Gaussian 第5–9章与第15章，以及 CP2K 第16章（QM/MM 替代方案）。
 
 ---
 
@@ -737,6 +757,8 @@ grep "ERR" ML_LOGFILE | tail          # training errors per step
 | GPUMD/NEP 教程 | [brucefan1983/GPUMD-Tutorials](https://github.com/brucefan1983/GPUMD-Tutorials) | NEP 训练与 GPUMD 模拟的官方示例 |
 | MACE 教程 | <https://mace-docs.readthedocs.io/>（含 Colab 训练/微调教程） | 训练、微调、基础模型使用 |
 | DeePMD-kit 文档 | <https://docs.deepmodeling.com/projects/deepmd/> | 快速上手与 DPA 预训练模型 |
+| Imperial MSE404-MM（QE 实验课） | <https://imperialcollegelondon.github.io/MSE404-MM/> | 9 个 Quantum ESPRESSO 实验：收敛、能带、DOS、自旋、优化、声子 |
+| Cornell PARADIM DFT 暑校（QE） | <https://www.paradim.org/cu_ss_2018> | Giustino、Pamuk 的 QE 上机课与视频；原理好，版本较旧 |
 | CompMatBook | [stanfordbshan/CompMatBook](https://github.com/stanfordbshan/CompMatBook) | 开源计算材料学教材 |
 | 中文 DFT+VASP 20 课 | [haiw201/dft-tutorial](https://github.com/haiw201/dft-tutorial) | 可与本仓库对照查漏补缺（无许可证，只链接） |
 
@@ -771,7 +793,8 @@ GitHub 上没有高星的 “awesome-dft” 或 “awesome-computational-chemist
 
 ### 6.5 本仓库内的资源入口
 
-- 四个软件板块：[VASP](../../VASP/README.md)、[Gaussian](../../Gaussian/README.md)、[CP2K](../../CP2K/README.md)、[OpenMX](../../OpenMX/README.md)；
+- 软件板块：[VASP](../../VASP/README.md)、[Gaussian](../../Gaussian/README.md)、[CP2K](../../CP2K/README.md)、[OpenMX](../../OpenMX/README.md)、[Quantum ESPRESSO](../../QE/README.md)；
+- 计算案例（酶催化 QM 簇模型等完整研究流程）：[Cases/README.md](../../Cases/README.md)；
 - NEP/GPUMD 机器学习势与数据集脚本：[Scripts/README.md](../../Scripts/README.md)；
 - GitHub 仓库与官方文档精选：[Resources/github-repos.md](../../Resources/github-repos.md)；
 - 本板块目录：[Common/README.md](../README.md)；

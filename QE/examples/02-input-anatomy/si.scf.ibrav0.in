@@ -1,0 +1,35 @@
+&CONTROL
+! Same diamond Si cell as si.scf.in, written with ibrav = 0 and explicit units.
+! This is the recommended style for structures converted from CIF/POSCAR.
+! The three vectors below equal the QE ibrav=2 vectors with a = 5.43 Angstrom:
+!   v1 = (a/2)(-1,0,1), v2 = (a/2)(0,1,1), v3 = (a/2)(-1,1,0)
+! Total energy should agree with si.scf.in within numerical precision.
+  calculation = 'scf'
+  prefix      = 'si0'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tprnfor     = .true.
+  tstress     = .true.
+/
+&SYSTEM
+  ibrav     = 0               ! lattice from CELL_PARAMETERS; no celldm(1), no A
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 30.0
+  ecutrho   = 240.0
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  -2.715000000   0.000000000   2.715000000
+   0.000000000   2.715000000   2.715000000
+  -2.715000000   2.715000000   0.000000000
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  8 8 8 0 0 0

@@ -1,0 +1,27 @@
+# TS optimisation for the nucleophilic attack. Start from the highest point of
+# the relaxed scan (orca_scan_OC.allxyz -> extract that frame to ts_guess.xyz).
+# The optimised TS is written to orca_ts.xyz and its Hessian to orca_ts.hess.
+# Calc_Hess computes the exact Hessian before the first step; Hybrid_Hess
+# { ... } (exact Hessian only for the listed atoms) is a cheaper alternative.
+! B3LYP D3BJ def2-SVP def2/J RIJCOSX CPCM(water) TightSCF OptTS Freq
+
+%pal nprocs 16 end
+%maxcore 3000
+
+%cpcm
+  epsilon 4.0
+end
+
+%geom
+  Calc_Hess true
+  MaxIter 200
+  Constraints
+@ORCA_FIX@
+  end
+end
+
+%freq
+  QuasiRRHO true
+end
+
+* xyzfile 1 1 ts_guess.xyz

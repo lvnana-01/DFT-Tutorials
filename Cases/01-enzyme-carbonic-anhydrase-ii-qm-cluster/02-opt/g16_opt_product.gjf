@@ -1,0 +1,14 @@
+%nprocshared=16
+%mem=24GB
+%chk=opt_product.chk
+#p B3LYP/Def2SVP EmpiricalDispersion=GD3BJ SCRF=(CPCM,Solvent=Water,Read) Opt=(ModRedundant,MaxCycles=200) Freq
+
+hCA II cluster, product complex Zn-bicarbonate (from IRC end point), B3LYP-D3(BJ)/def2-SVP, CPCM eps=4, cap atoms frozen
+
+@CHARGE_MULT@
+@COORDS@
+
+@FREEZE@
+
+Eps=4.0
+

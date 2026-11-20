@@ -1,0 +1,16 @@
+&INPUT
+! Phonon dispersion along Gamma-X-W-X'-K-Gamma-L (fcc), q in Cartesian
+! units of 2pi/a. X' = (1,1,0) is equivalent to X; the segment X'-Gamma
+! passes through K = (3/4,3/4,0).
+  asr            = 'crystal'
+  flfrc          = 'si444.fc'
+  flfrq          = 'si.freq'       ! also writes si.freq.gp for plotting
+  q_in_band_form = .true.
+/
+6
+  0.000  0.000  0.000  40
+  1.000  0.000  0.000  20
+  1.000  0.500  0.000  20
+  1.000  1.000  0.000  60
+  0.000  0.000  0.000  40
+  0.500  0.500  0.500   1

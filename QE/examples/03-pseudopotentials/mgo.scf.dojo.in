@@ -1,0 +1,38 @@
+&CONTROL
+! MgO rock salt with PseudoDojo norm-conserving pseudopotentials
+! (table nc-sr-05, PBE, standard accuracy, UPF format).
+! Files after extracting nc-sr-05_pbe_standard_upf.tgz:
+!   nc-sr-05_pbe_standard_upf/Mg.upf
+!   nc-sr-05_pbe_standard_upf/O.upf
+! PseudoDojo cutoff hints are in HARTREE. Normal hint for Mg and O is
+! 42 Ha = 84 Ry. For NC pseudopotentials ecutrho = 4 * ecutwfc (default).
+! z_valence in the headers: nc-sr-05 Mg.upf = 10 (2s2p semicore in valence),
+! O.upf = 6, so this cell has 16 valence electrons (mgo.scf.in has 8).
+! Re-check with upf_info.sh if you use another table or version.
+! Total energies from different pseudopotential sets are NOT comparable.
+  calculation = 'scf'
+  prefix      = 'mgo_dojo'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo_dojo'
+  tprnfor     = .true.
+  tstress     = .true.
+/
+&SYSTEM
+  ibrav     = 2
+  celldm(1) = 7.96
+  nat       = 2
+  ntyp      = 2
+  ecutwfc   = 84.0            ! Ry (42 Ha normal hint x 2)
+  ! ecutrho not set -> 4 * ecutwfc = 336 Ry, adequate for NC
+/
+&ELECTRONS
+  conv_thr = 1.0d-10
+/
+ATOMIC_SPECIES
+  Mg  24.305  Mg.upf
+  O   15.999  O.upf
+ATOMIC_POSITIONS crystal
+  Mg  0.0  0.0  0.0
+  O   0.5  0.5  0.5
+K_POINTS automatic
+  8 8 8 0 0 0

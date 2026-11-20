@@ -1,0 +1,8 @@
+Si phonons at Gamma only (single q point)
+&INPUTPH
+  prefix = 'si'
+  outdir = './tmp'
+  tr2_ph = 1.0d-16
+  fildyn = 'si.dynG'
+/
+0.0 0.0 0.0

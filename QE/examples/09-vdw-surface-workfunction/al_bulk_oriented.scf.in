@@ -1,0 +1,37 @@
+&CONTROL
+! Bulk Al in a hexagonal cell oriented along [111] with 3 atoms (ABC),
+! the same in-plane cell and k mesh (16x16) as the slab. Used as the bulk
+! reference E_bulk/atom in the surface energy formula; an oriented cell
+! (60-degree in-plane cell: A at (0,0), B at (1/3,1/3), C at (2/3,2/3))
+! gives better error cancellation than the fcc primitive cell.
+  calculation = 'scf'
+  prefix      = 'al_bulk111'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 3
+  ntyp        = 1
+  ecutwfc     = 40.0
+  ecutrho     = 320.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  2.856711  0.000000  0.000000
+  1.428356  2.473985  0.000000
+  0.000000  0.000000  6.997485
+ATOMIC_POSITIONS angstrom
+  Al  0.000000  0.000000  0.000000
+  Al  1.428356  0.824662  2.332495
+  Al  2.856711  1.649323  4.664990
+K_POINTS automatic
+  16 16 6 0 0 0

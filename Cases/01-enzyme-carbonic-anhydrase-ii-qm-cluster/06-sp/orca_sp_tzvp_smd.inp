@@ -1,0 +1,14 @@
+# Optional: the same single point with SMD (generic "low-polarity" solvent).
+# SMD needs a named solvent; diethyl ether (epsilon about 4.2) is a common
+# stand-in for the protein environment. Compare with the CPCM eps=4 result.
+! B3LYP D3BJ def2-TZVP def2/J RIJCOSX TightSCF CPCM
+
+%pal nprocs 16 end
+%maxcore 4000
+
+%cpcm
+  smd true
+  SMDsolvent "diethyl ether"
+end
+
+* xyzfile 1 1 orca_opt_reactant.xyz

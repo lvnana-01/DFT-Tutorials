@@ -1,0 +1,43 @@
+&CONTROL
+! LiCoO2 (R-3m, non-magnetic insulator): ground state for DFT+U+V
+! linear response. U and V start from tiny values; hp.x then returns
+! on-site U(Co-3d) and inter-site V(Co-3d, O-2p) with the atom-pair
+! indices that pw.x expects (file HUBBARD.dat).
+! Pseudopotentials (SSSP 1.3 PBE efficiency):
+!   Co_pbe_v1.2.uspp.F.UPF      (45 / 360 Ry)
+!   O.pbe-n-kjpaw_psl.0.1.UPF   (50 / 400 Ry)
+!   li_pbe_v1.4.uspp.F.UPF      (40 / 320 Ry)
+  calculation = 'scf'
+  prefix      = 'licoo2'
+  outdir      = './tmp_uv'
+  pseudo_dir  = './pseudo'
+  verbosity   = 'high'
+/
+&SYSTEM
+  ibrav       = 5               ! trigonal R, rhombohedral primitive cell
+  celldm(1)   = 9.3705          ! rhombohedral lattice parameter (Bohr)
+  celldm(4)   = 0.83874         ! cos(alpha)
+  nat         = 4
+  ntyp        = 3
+  ecutwfc     = 50.0
+  ecutrho     = 400.0
+/
+&ELECTRONS
+  conv_thr    = 1.0d-14
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  Co  58.933  Co_pbe_v1.2.uspp.F.UPF
+  O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+  Li   6.94   li_pbe_v1.4.uspp.F.UPF
+! Hubbard atoms (Co, and O because it enters V) first
+ATOMIC_POSITIONS crystal
+  Co  0.0000000  0.0000000  0.0000000
+  O   0.2604885  0.2604885  0.2604885
+  O   0.7395115  0.7395115  0.7395115
+  Li  0.5000000  0.5000000  0.5000000
+K_POINTS automatic
+  4 4 4 0 0 0
+HUBBARD {ortho-atomic}
+U Co-3d 0.0001
+V Co-3d O-2p 1 2 0.0001

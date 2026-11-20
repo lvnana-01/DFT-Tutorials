@@ -1,0 +1,5 @@
+&INPUT
+  fildyn = 'pb.dyn'
+  flfrc  = 'pb.fc'
+  zasr   = 'crystal'
+/

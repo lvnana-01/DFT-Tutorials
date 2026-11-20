@@ -1,0 +1,17 @@
+# xTB relaxed scan of the nucleophilic attack O(OH-)...C(CO2).
+# Use with the CO2-containing model (cut_cluster.py --add-co2 --co2-pdb 3D92.pdb,
+# default water/Glu options): atom 2 = O of Zn-OH-, atom 52 = C of CO2.
+# Check "REACTION COORDINATE" in build_co2/build_report.txt and edit if needed.
+# The scan goes from 2.80 A to 1.50 A in 14 points; each point is a
+# constrained optimisation (xTB scans are always relaxed scans).
+# This is only a cheap preview: take the highest point as a guide, NOT as a TS.
+$fix
+   atoms: 9,21,33,40,49
+$end
+$constrain
+   force constant=1.0
+   distance: 2, 52, 2.80
+$end
+$scan
+   1: 2.80, 1.50, 14
+$end

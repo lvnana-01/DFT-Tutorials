@@ -1,0 +1,12 @@
+&INPUTHP
+! DFT+U+V linear response for LiCoO2 (prefix/outdir as in licoo2.uv.scf.in).
+! num_neigh: how many neighbours per Hubbard atom are written to HUBBARD.dat
+! lmin = 2: write V only for pairs whose first atom has l >= 2 (Co-3d).
+  prefix       = 'licoo2'
+  outdir       = './tmp_uv'
+  nq1 = 2, nq2 = 2, nq3 = 2
+  conv_thr_chi = 1.0d-8
+  iverbosity   = 2
+  num_neigh    = 6
+  lmin         = 2
+/

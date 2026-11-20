@@ -1,0 +1,14 @@
+%nprocshared=16
+%mem=24GB
+%chk=ts_attack.chk
+#p B3LYP/Def2SVP EmpiricalDispersion=GD3BJ SCRF=(CPCM,Solvent=Water,Read) Opt=(TS,CalcFC,NoEigenTest,ModRedundant,MaxCycles=200) Freq
+
+hCA II cluster, TS of nucleophilic attack Zn-OH- on CO2; guess = highest point of the relaxed scan
+
+@CHARGE_MULT@
+@COORDS@
+
+@FREEZE@
+
+Eps=4.0
+

@@ -1,0 +1,35 @@
+&CONTROL
+! Zincblende GaAs with spin-orbit coupling (non-magnetic SOC).
+! Fully relativistic PAW pseudopotentials from pslibrary 1.0.0:
+!   Ga.rel-pbe-dn-kjpaw_psl.1.0.0.UPF  (suggested >= 60 / 255 Ry)
+!   As.rel-pbe-n-kjpaw_psl.1.0.0.UPF   (suggested >= 20 / 103 Ry)
+! No starting_magnetization is given, so the magnetization is not
+! computed and time-reversal symmetry is kept (domag = .false.).
+  calculation = 'scf'
+  prefix      = 'gaas_soc'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 10.68            ! a = 5.65 Angstrom (exp.)
+  nat         = 2
+  ntyp        = 2
+  ecutwfc     = 60.0
+  ecutrho     = 480.0
+  occupations = 'fixed'
+  noncolin    = .true.           ! two-component spinors (do NOT set nspin)
+  lspinorb    = .true.           ! use the j-dependent (FR) projectors
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.5
+/
+ATOMIC_SPECIES
+  Ga  69.723  Ga.rel-pbe-dn-kjpaw_psl.1.0.0.UPF
+  As  74.922  As.rel-pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Ga  0.00  0.00  0.00
+  As  0.25  0.25  0.25
+K_POINTS automatic
+  8 8 8 0 0 0

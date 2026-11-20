@@ -1,0 +1,6 @@
+&INPUT
+  fildyn = 'al.dyn'
+  flfrc  = 'al444.fc'
+  zasr   = 'simple'
+  la2F   = .true.        ! also Fourier-transform the el-ph linewidths
+/

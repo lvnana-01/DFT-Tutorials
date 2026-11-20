@@ -1,0 +1,35 @@
+&CONTROL
+! Step 1 of a force-theorem MAE estimate for bcc Fe:
+! collinear LSDA scf with a FULLY RELATIVISTIC ultrasoft pseudopotential.
+! (In a calculation without lspinorb the FR pseudopotential is averaged
+! to a scalar-relativistic one.) lforcet does not work with PAW, hence USPP.
+! Pseudopotential (pslibrary 1.0.0): Fe.rel-pbe-spn-rrkjus_psl.1.0.0.UPF
+! (suggested >= 71 / 496 Ry)
+  calculation = 'scf'
+  prefix      = 'fe_mae'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 3
+  celldm(1)   = 5.42
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 75.0
+  ecutrho     = 600.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.01
+  nspin       = 2
+  starting_magnetization(1) = 0.5
+/
+&ELECTRONS
+  conv_thr    = 1.0d-11
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Fe  55.845  Fe.rel-pbe-spn-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Fe  0.0  0.0  0.0
+K_POINTS automatic
+  24 24 24 0 0 0

@@ -1,0 +1,10 @@
+&INPUT
+  fildyn = 'gaas.dynG'
+  asr    = 'crystal'          ! acoustic sum rule for a 3D crystal
+  q(1)   = 1.0                ! direction of q -> 0 used for the LO non-analytic term
+  q(2)   = 0.0
+  q(3)   = 0.0
+  filout = 'gaas.dynmat.modes'
+  filmol = 'gaas.dynmat.mold'
+  filxsf = 'gaas.dynmat.axsf'
+/

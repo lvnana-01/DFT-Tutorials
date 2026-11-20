@@ -1,0 +1,11 @@
+&INPUTPP
+  prefix      = 'gaas'
+  outdir      = './tmp'
+  calculation = 'eps'
+/
+&ENERGY_GRID
+  intersmear = 0.10     ! interband broadening (eV)
+  wmin       = 0.0      ! eV
+  wmax       = 15.0     ! eV
+  nw         = 1500
+/

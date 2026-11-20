@@ -1,0 +1,14 @@
+&INPUTPP
+! Electron localization function (ELF) of H2O (plot_num = 8).
+  prefix   = 'h2o'
+  outdir   = './tmp'
+  filplot  = 'h2o.elf.pp'
+  plot_num = 8
+/
+&PLOT
+  nfile         = 1
+  filepp(1)     = 'h2o.elf.pp'
+  iflag         = 3
+  output_format = 6
+  fileout       = 'h2o_elf.cube'
+/

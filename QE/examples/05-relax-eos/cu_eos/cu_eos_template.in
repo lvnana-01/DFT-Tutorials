@@ -1,0 +1,32 @@
+&CONTROL
+! fcc Cu single point for the E(a) equation-of-state scan.
+! Placeholder @ALAT@ = cubic lattice parameter in Angstrom (set by run_eos.sh).
+! Pseudopotential: SSSP 1.3 PBE efficiency, Cu.paw.z_11.ld1.psl.v1.0.0-low.upf
+! (hint 90 / 720 Ry). Cutoffs and k/smearing must be converged first (Chapter 4).
+  calculation = 'scf'
+  prefix      = 'cu'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tstress     = .true.
+/
+&SYSTEM
+  ibrav     = 2
+  A         = @ALAT@
+  nat       = 1
+  ntyp      = 1
+  ecutwfc   = 90.0
+  ecutrho   = 720.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Cu  63.546  Cu.paw.z_11.ld1.psl.v1.0.0-low.upf
+ATOMIC_POSITIONS crystal
+  Cu  0.00  0.00  0.00
+K_POINTS automatic
+  16 16 16 0 0 0

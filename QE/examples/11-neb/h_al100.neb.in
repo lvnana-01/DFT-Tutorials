@@ -1,0 +1,82 @@
+BEGIN
+BEGIN_PATH_INPUT
+&PATH
+  string_method = 'neb'
+  restart_mode  = 'from_scratch'
+  nstep_path    = 200          ! default is 1 -- always set it
+  num_of_images = 7            ! including both end points
+  opt_scheme    = 'broyden'
+  CI_scheme     = 'auto'       ! climbing image on the highest-energy image
+  path_thr      = 0.05         ! eV/Angstrom (default)
+  ds            = 1.0
+  k_max         = 0.3
+  k_min         = 0.2
+/
+END_PATH_INPUT
+BEGIN_ENGINE_INPUT
+&CONTROL
+! Chapter 11: CI-NEB of H hopping between two neighbouring four-fold hollow
+! sites on Al(100). Replace both end-point geometries by the RELAXED ones
+! from h_al100.initial.relax.out / h_al100.final.relax.out
+! (grep -A15 'Begin final coordinates'). Keep the atom order identical.
+  prefix     = 'h_al100_neb'
+  outdir     = './tmp'
+  pseudo_dir = './pseudo'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 13
+  ntyp        = 2
+  ecutwfc     = 60.0          ! max SSSP hint of Al (30) and H (60)
+  ecutrho     = 480.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-8
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+  H    1.008   H.pbe-rrkjus_psl.1.0.0.UPF
+BEGIN_POSITIONS
+FIRST_IMAGE
+ATOMIC_POSITIONS angstrom
+  Al  0.00000  0.00000  2.00000   0 0 0
+  Al  0.00000  2.85671  2.00000   0 0 0
+  Al  2.85671  0.00000  2.00000   0 0 0
+  Al  2.85671  2.85671  2.00000   0 0 0
+  Al  1.42836  1.42836  4.02000
+  Al  1.42836  4.28507  4.02000
+  Al  4.28507  1.42836  4.02000
+  Al  4.28507  4.28507  4.02000
+  Al  0.00000  0.00000  6.04000
+  Al  0.00000  2.85671  6.04000
+  Al  2.85671  0.00000  6.04000
+  Al  2.85671  2.85671  6.04000
+  H   1.42836  1.42836  6.80000
+LAST_IMAGE
+ATOMIC_POSITIONS angstrom
+  Al  0.00000  0.00000  2.00000
+  Al  0.00000  2.85671  2.00000
+  Al  2.85671  0.00000  2.00000
+  Al  2.85671  2.85671  2.00000
+  Al  1.42836  1.42836  4.02000
+  Al  1.42836  4.28507  4.02000
+  Al  4.28507  1.42836  4.02000
+  Al  4.28507  4.28507  4.02000
+  Al  0.00000  0.00000  6.04000
+  Al  0.00000  2.85671  6.04000
+  Al  2.85671  0.00000  6.04000
+  Al  2.85671  2.85671  6.04000
+  H   4.28507  1.42836  6.80000
+END_POSITIONS
+K_POINTS automatic
+  6 6 1 0 0 0
+CELL_PARAMETERS angstrom
+  5.71342  0.00000   0.00000
+  0.00000  5.71342   0.00000
+  0.00000  0.00000  20.00000
+END_ENGINE_INPUT
+END

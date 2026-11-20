@@ -1,0 +1,26 @@
+# hCA II cluster, reactant complex Zn-OH- + CO2
+# B3LYP-D3(BJ)/def2-SVP with RIJCOSX, CPCM with epsilon = 4, cap atoms frozen.
+# Fill @ORCA_FIX@ with 00-structure/fill_template.py (0-based atom numbers!)
+# and provide reactant.xyz (e.g. copy of 01-xtb-preopt/xtb_reactant/xtbopt.xyz).
+# The optimised geometry is written to orca_opt_reactant.xyz.
+! B3LYP D3BJ def2-SVP def2/J RIJCOSX CPCM(water) TightSCF Opt Freq
+
+%pal nprocs 16 end
+%maxcore 3000
+
+%cpcm
+  epsilon 4.0          # overrides the dielectric constant of water
+end
+
+%geom
+  MaxIter 200
+  Constraints
+@ORCA_FIX@
+  end
+end
+
+%freq
+  QuasiRRHO true       # ORCA 6: Grimme quasi-RRHO entropy in the thermochemistry
+end
+
+* xyzfile 1 1 reactant.xyz

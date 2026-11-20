@@ -1,0 +1,29 @@
+! Si (diamond), PBE, SSSP Efficiency 1.3 pseudopotential (ultrasoft).
+! Step 1 of the Wannier90 workflow: self-consistent charge density.
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'si'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav     = 0
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 30.0      ! SSSP 1.3 Efficiency recommendation for Si
+  ecutrho   = 240.0     ! dual 8 (ultrasoft)
+/
+&ELECTRONS
+  conv_thr  = 1.0d-10
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  -2.7150   0.0000   2.7150
+   0.0000   2.7150   2.7150
+  -2.7150   2.7150   0.0000
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  8 8 8 0 0 0

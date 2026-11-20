@@ -1,0 +1,31 @@
+! Small Si SCF used to illustrate parallel options (-nk/-nd), restart and output parsing.
+! Pseudopotential: SSSP 1.3 PBE efficiency, Si.pbe-n-rrkjus_psl.1.0.0.UPF (ultrasoft).
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'si'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tprnfor     = .true.
+  tstress     = .true.
+  max_seconds = 3000          ! clean stop before a 1 h wall-time limit
+/
+&SYSTEM
+  ibrav       = 2
+  celldm(1)   = 10.26
+  nat         = 2
+  ntyp        = 1
+  ecutwfc     = 30.0
+  ecutrho     = 240.0
+  occupations = 'fixed'
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.7
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  8 8 8  0 0 0

@@ -1,0 +1,7 @@
+&BANDS
+! Step 3: bands.x reorders bands and writes si.bands.dat(.gnu, .rap).
+  prefix  = 'si'
+  outdir  = './tmp'
+  filband = 'si.bands.dat'
+  lsym    = .true.            ! symmetry analysis -> si.bands.dat.rap
+/

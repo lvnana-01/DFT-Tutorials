@@ -368,6 +368,49 @@ nav:
           - "18-job-scripts": OpenMX/examples/18-job-scripts/README.md
           - "18-on-si-dc-krylov": OpenMX/examples/18-on-si-dc-krylov/README.md
       - 脚本: OpenMX/scripts/README.md
+  - "Quantum ESPRESSO":
+      - 概览: QE/README.md
+      - 教程:
+          - "第1章 QE 概述、版本与安装": QE/tutorials/01-install.md
+          - "第2章 pw.x 输入文件结构与第一个 SCF": QE/tutorials/02-input-anatomy.md
+          - "第3章 赝势选择：SSSP、PseudoDojo 与 pslibrary": QE/tutorials/03-pseudopotentials.md
+          - "第4章 收敛测试：ecutwfc/ecutrho、k 点与 smearing": QE/tutorials/04-convergence.md
+          - "第5章 结构优化与状态方程": QE/tutorials/05-relax-eos.md
+          - "第6章 能带结构、态密度与投影态密度": QE/tutorials/06-band-dos-pdos.md
+          - "第7章 磁性、非共线与自旋轨道耦合": QE/tutorials/07-magnetism-soc.md
+          - "第8章 DFT+U/U+V 与 hp.x 线性响应": QE/tutorials/08-dftu-hp.md
+          - "第9章 范德华修正、二维材料、表面与功函数": QE/tutorials/09-vdw-surface-workfunction.md
+          - "第10章 电荷密度、差分电荷、ELF、STM 与 Bader 分析": QE/tutorials/10-charge-elf-bader.md
+          - "第11章 过渡态搜索：neb.x": QE/tutorials/11-neb.md
+          - "第12章 声子：ph.x、q2r.x 与 matdyn.x": QE/tutorials/12-phonon-dfpt.md
+          - "第13章 介电常数、Born 有效电荷、红外与拉曼": QE/tutorials/13-dielectric-ir-raman.md
+          - "第14章 杂化泛函与 meta-GGA": QE/tutorials/14-hybrid-metagga.md
+          - "第15章 Wannier90 接口与插值能带": QE/tutorials/15-wannier90.md
+          - "第16章 电声耦合与超导：ph.x 与 EPW 入门": QE/tutorials/16-elph-epw.md
+          - "第17章 分子动力学：pw.x MD 与 Car-Parrinello cp.x": QE/tutorials/17-md-cp.md
+          - "第18章 自动化、并行性能与报错排查": QE/tutorials/18-automation-parallel-troubleshooting.md
+      - 示例:
+          - "01-install": QE/examples/01-install/README.md
+          - "02-input-anatomy": QE/examples/02-input-anatomy/README.md
+          - "03-pseudopotentials": QE/examples/03-pseudopotentials/README.md
+          - "04-convergence": QE/examples/04-convergence/README.md
+          - "05-relax-eos": QE/examples/05-relax-eos/README.md
+          - "06-band-dos-pdos": QE/examples/06-band-dos-pdos/README.md
+          - "07-magnetism-soc": QE/examples/07-magnetism-soc/README.md
+          - "08-dftu-hp": QE/examples/08-dftu-hp/README.md
+          - "09-vdw-surface-workfunction": QE/examples/09-vdw-surface-workfunction/README.md
+          - "10-charge-elf-bader": QE/examples/10-charge-elf-bader/README.md
+          - "11-neb": QE/examples/11-neb/README.md
+          - "12-phonon-dfpt": QE/examples/12-phonon-dfpt/README.md
+          - "13-dielectric-ir-raman": QE/examples/13-dielectric-ir-raman/README.md
+          - "14-hybrid-metagga": QE/examples/14-hybrid-metagga/README.md
+          - "15-wannier90": QE/examples/15-wannier90/README.md
+          - "16-elph-epw": QE/examples/16-elph-epw/README.md
+          - "17-md-cp": QE/examples/17-md-cp/README.md
+          - "18-automation-parallel": QE/examples/18-automation-parallel/README.md
+      - 脚本: QE/scripts/README.md
+  - "计算案例":
+      - 概览: Cases/README.md
   - NEP/GPUMD 脚本: Scripts/README.md
   - GitHub 资源精选: Resources/github-repos.md
   - English: README_en.md

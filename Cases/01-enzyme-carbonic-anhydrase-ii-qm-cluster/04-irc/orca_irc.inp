@@ -1,0 +1,24 @@
+# IRC from the optimised TS, reusing the Hessian written by orca_ts.inp
+# (orca_ts.hess) and its final geometry (orca_ts.xyz). Same functional/basis/
+# solvent as the TS optimisation. The Cartesian constraints of the TS job are
+# not part of this input: check that the frozen C-beta atoms stay in place.
+! B3LYP D3BJ def2-SVP def2/J RIJCOSX CPCM(water) TightSCF IRC
+
+%pal nprocs 16 end
+%maxcore 3000
+
+%cpcm
+  epsilon 4.0
+end
+
+%irc
+  MaxIter 60
+  Direction both
+  InitHess read
+  Hess_Filename "orca_ts.hess"
+  Monitor_Internals
+    { B 1 51 }
+  end
+end
+
+* xyzfile 1 1 orca_ts.xyz

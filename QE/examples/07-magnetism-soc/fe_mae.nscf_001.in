@@ -1,0 +1,42 @@
+&CONTROL
+! Step 2 of the force-theorem MAE: non-self-consistent SOC run that reads
+! the LSDA density of fe_mae.lsda.in (same prefix; outdir is a copy) and rotates the
+! magnetization to the direction given by angle1/angle2 (type 1 only).
+! Magnetization direction: [001]  (angle1 = 0.0, angle2 = 0.0)
+! Compare the line "eband, Ef (eV) =" between directions.
+  calculation = 'nscf'
+  prefix      = 'fe_mae'
+  outdir      = './tmp_001'    ! private copy of tmp/fe_mae.save (see run_all.sh)
+  pseudo_dir  = './pseudo'
+  verbosity   = 'high'         ! eband is printed only with high verbosity
+                               ! when there are >= 100 k points
+/
+&SYSTEM
+  ibrav       = 3
+  celldm(1)   = 5.42
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 75.0
+  ecutrho     = 600.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.01
+  noncolin    = .true.
+  lspinorb    = .true.
+  lforcet     = .true.
+  nosym       = .true.           ! same full k-point set for every direction
+                                 ! (as in QE PP/examples/ForceTheorem_example)
+  starting_magnetization(1) = 0.5
+  angle1(1)   = 0.0
+  angle2(1)   = 0.0
+/
+&ELECTRONS
+  conv_thr    = 1.0d-11
+  diago_full_acc = .true.
+/
+ATOMIC_SPECIES
+  Fe  55.845  Fe.rel-pbe-spn-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Fe  0.0  0.0  0.0
+K_POINTS automatic
+  24 24 24 0 0 0

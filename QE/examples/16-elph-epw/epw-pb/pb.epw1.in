@@ -1,0 +1,31 @@
+! EPW step 1: Wannierize (Pb 6s6p -> 4 sp3-like Wannier functions) and
+! transform the coarse-grid el-ph matrix elements to the Wannier representation.
+! Fine grids are set to 1 here: this run only writes the Wannier-space data
+! (pb.epmatwp, pb.ukk, crystal.fmt, epwdata.fmt, wigner.fmt, ...).
+&INPUTEPW
+  prefix        = 'pb'
+  outdir        = './'
+  amass(1)      = 207.2
+  dvscf_dir     = './save'          ! created by EPW/bin/pp.py
+
+  elph          = .true.
+  epwwrite      = .true.
+  epwread       = .false.
+  etf_mem       = 0
+  asr_typ       = 'crystal'
+
+  wannierize    = .true.
+  nbndsub       = 4
+  bands_skipped = 'exclude_bands = 1:5'   ! drop the five 5d bands
+  num_iter      = 500
+  proj(1)       = 'Pb:sp3'
+  dis_froz_min  = -1.0             ! eV; frozen window, check against E_F in pb.scf.out
+  dis_froz_max  = 16.5             ! eV; placeholder, adapt to your band structure
+  wdata(1)      = 'dis_num_iter = 1000'
+  wdata(2)      = 'use_ws_distance = .true.'
+
+  nk1 = 6, nk2 = 6, nk3 = 6         ! coarse k grid (= nscf grid)
+  nq1 = 6, nq2 = 6, nq3 = 6         ! coarse q grid (= ph.x grid)
+  nkf1 = 1, nkf2 = 1, nkf3 = 1
+  nqf1 = 1, nqf2 = 1, nqf3 = 1
+/

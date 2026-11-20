@@ -1,0 +1,57 @@
+&CONTROL
+! Al(111) 1x1 slab, 6 layers, about 18 Angstrom of vacuum.
+! Bottom two layers fixed (if_pos = 0 0 0) to mimic the bulk; the top four
+! relax. Dipole correction (tefield + dipfield, eamp = 0) is switched on so
+! that the same setup works for asymmetric slabs (adsorbates on one side).
+! a0 = 4.04 Angstrom (PBE-like); use the bulk value from your own Chapter 5 run.
+! In-plane cell with a 60-degree angle: ABC stacking sites are
+! A = (0,0), B = (1/3,1/3), C = (2/3,2/3) in fractional in-plane coordinates.
+! Pseudopotential: SSSP 1.3 PBE efficiency, Al.pbe-n-kjpaw_psl.1.0.0.UPF (30 / 240 Ry)
+  calculation   = 'relax'
+  prefix        = 'al111'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  tprnfor       = .true.
+  forc_conv_thr = 1.0d-4
+  tefield       = .true.         ! required for the dipole correction
+  dipfield      = .true.         ! Bengtsson dipole correction
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 6
+  ntyp        = 1
+  ecutwfc     = 40.0
+  ecutrho     = 320.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+  edir        = 3                ! correction along the third lattice vector (z)
+  emaxpos     = 0.75             ! sawtooth maximum: inside the vacuum
+  eopreg      = 0.05             ! width of the decreasing region (in vacuum)
+  eamp        = 0.0              ! no external field, dipole correction only
+/
+&ELECTRONS
+  conv_thr    = 1.0d-9
+  mixing_beta = 0.3
+  mixing_mode = 'local-TF'       ! helps for slabs (inhomogeneous systems)
+/
+&IONS
+  ion_dynamics = 'bfgs'
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  2.856711  0.000000   0.000000
+  1.428356  2.473985   0.000000
+  0.000000  0.000000  30.000000
+! slab occupies z = 2.0 ... 13.66 Angstrom (fractional 0.07 ... 0.46);
+! vacuum from 13.66 to 32.0 (periodic) contains emaxpos/eopreg
+ATOMIC_POSITIONS angstrom
+  Al  0.000000  0.000000   2.000000  0 0 0
+  Al  1.428356  0.824662   4.332495  0 0 0
+  Al  2.856711  1.649323   6.664990
+  Al  0.000000  0.000000   8.997485
+  Al  1.428356  0.824662  11.329980
+  Al  2.856711  1.649323  13.662475
+K_POINTS automatic
+  16 16 1 0 0 0

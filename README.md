@@ -2,17 +2,17 @@
 
 # DFT-Tutorials：第一性原理计算中文教程与脚本库
 
-**VASP · Gaussian · CP2K · OpenMX 从入门到进阶 ｜ 可直接运行的示例输入 ｜ 前后处理脚本 ｜ GitHub 资源精选**
+**VASP · Gaussian · CP2K · OpenMX · Quantum ESPRESSO 从入门到进阶 ｜ 可直接运行的示例输入 ｜ 前后处理脚本 ｜ GitHub 资源精选**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://zenggs05.github.io/DFT-Tutorials/) [![GitHub stars](https://img.shields.io/github/stars/zenggs05/DFT-Tutorials?style=social)](https://github.com/zenggs05/DFT-Tutorials/stargazers) [![Last commit](https://img.shields.io/github/last-commit/zenggs05/DFT-Tutorials)](https://github.com/zenggs05/DFT-Tutorials/commits/main)
 
-本仓库是一套面向科研新手与进阶用户的**第一性原理（DFT）计算中文教程**，系统讲解 **VASP、Gaussian、CP2K、OpenMX** 四款主流软件：从安装编译、输入文件、收敛测试、结构优化，到能带/态密度、杂化泛函、DFT+U、自旋轨道耦合、表面与吸附、过渡态（NEB/IRC）、声子、分子动力学、激发态（TD-DFT）、溶剂化、NBO 与电荷分析、电子输运等。每章都配有可直接运行的示例输入、逐参数解释、常见报错排查与参考资料，并提供配套的 Python/Bash 脚本。
+本仓库是一套面向科研新手与进阶用户的**第一性原理（DFT）计算中文教程**，系统讲解 **VASP、Gaussian、CP2K、OpenMX、Quantum ESPRESSO** 五款主流软件：从安装编译、输入文件、收敛测试、结构优化，到能带/态密度、杂化泛函、DFT+U、自旋轨道耦合、表面与吸附、过渡态（NEB/IRC）、声子、分子动力学、激发态（TD-DFT）、溶剂化、NBO 与电荷分析、电子输运等。每章都配有可直接运行的示例输入、逐参数解释、常见报错排查与参考资料，并提供配套的 Python/Bash 脚本。
 
 📖 **在线阅读（带搜索的文档网站）**：<https://zenggs05.github.io/DFT-Tutorials/>
 
 🎓 **想有人手把手带你入门？** 一对一 DFT/Gaussian 实操课与保研辅导：<https://feiniaofly.cn/>（[详情](#tutoring)）
 
-目前收录 **79 章教程**、**167 套示例输入**、**85 个脚本**，以及 **230+ 个相关 GitHub 仓库**的精选索引。
+目前收录 **97 章教程**、**185 套示例输入**、**97 个脚本**，以及 **230+ 个相关 GitHub 仓库**的精选索引。
 
 ## 📚 内容一览
 
@@ -22,7 +22,9 @@
 | **Gaussian** | 高斯基组量子化学，分子结构/反应/光谱 | [Gaussian/README.md](Gaussian/README.md) |
 | **CP2K** | GPW 混合基组，大体系 AIMD / QM/MM | [CP2K/README.md](CP2K/README.md) |
 | **OpenMX** | 数值原子轨道 + 模守恒赝势，磁性/输运/O(N) | [OpenMX/README.md](OpenMX/README.md) |
+| **Quantum ESPRESSO** | 开源平面波赝势程序，声子/电声耦合/Wannier | [QE/README.md](QE/README.md) |
 | **通用基础** | Linux/HPC、建模、ASE/pymatgen、可视化、学习路线 | [Common/README.md](Common/README.md) |
+| **计算案例** | 酶催化 QM 簇模型等完整研究流程演示（输入与工作流） | [Cases/README.md](Cases/README.md) |
 | **NEP/GPUMD 脚本** | 机器学习势训练集生成、NEP 结果分析、GPUMD 热输运作图 | [Scripts/README.md](Scripts/README.md) |
 | **资源精选** | 230+ 个 VASP/Gaussian/CP2K/OpenMX 相关 GitHub 仓库与官方文档 | [Resources/github-repos.md](Resources/github-repos.md) |
 
@@ -120,6 +122,29 @@
 | [第17章 NEGF 电子输运](OpenMX/tutorials/17-negf-transport.md) | [17-negf-7agnr](OpenMX/examples/17-negf-7agnr/README.md) [17-negf-carbon-chain](OpenMX/examples/17-negf-carbon-chain/README.md) |
 | [第18章 并行、大体系 O(N)、作业脚本与常见错误排查（Parallelization, Large-Scale O(N) Methods, Job Scripts & Troubleshooting in OpenMX）](OpenMX/tutorials/18-parallel-on-errors.md) | [18-api-python](OpenMX/examples/18-api-python/README.md) [18-c60-cluster-elpa](OpenMX/examples/18-c60-cluster-elpa/README.md) [18-job-scripts](OpenMX/examples/18-job-scripts/README.md) [18-on-si-dc-krylov](OpenMX/examples/18-on-si-dc-krylov/README.md) |
 
+### Quantum ESPRESSO
+
+| 章节 | 示例 |
+|---|---|
+| [第1章 QE 概述、版本与安装](QE/tutorials/01-install.md) | [01-install](QE/examples/01-install/README.md) |
+| [第2章 pw.x 输入文件结构与第一个 SCF](QE/tutorials/02-input-anatomy.md) | [02-input-anatomy](QE/examples/02-input-anatomy/README.md) |
+| [第3章 赝势选择：SSSP、PseudoDojo 与 pslibrary](QE/tutorials/03-pseudopotentials.md) | [03-pseudopotentials](QE/examples/03-pseudopotentials/README.md) |
+| [第4章 收敛测试：ecutwfc/ecutrho、k 点与 smearing](QE/tutorials/04-convergence.md) | [04-convergence](QE/examples/04-convergence/README.md) |
+| [第5章 结构优化与状态方程](QE/tutorials/05-relax-eos.md) | [05-relax-eos](QE/examples/05-relax-eos/README.md) |
+| [第6章 能带结构、态密度与投影态密度](QE/tutorials/06-band-dos-pdos.md) | [06-band-dos-pdos](QE/examples/06-band-dos-pdos/README.md) |
+| [第7章 磁性、非共线与自旋轨道耦合](QE/tutorials/07-magnetism-soc.md) | [07-magnetism-soc](QE/examples/07-magnetism-soc/README.md) |
+| [第8章 DFT+U/U+V 与 hp.x 线性响应](QE/tutorials/08-dftu-hp.md) | [08-dftu-hp](QE/examples/08-dftu-hp/README.md) |
+| [第9章 范德华修正、二维材料、表面与功函数](QE/tutorials/09-vdw-surface-workfunction.md) | [09-vdw-surface-workfunction](QE/examples/09-vdw-surface-workfunction/README.md) |
+| [第10章 电荷密度、差分电荷、ELF、STM 与 Bader 分析](QE/tutorials/10-charge-elf-bader.md) | [10-charge-elf-bader](QE/examples/10-charge-elf-bader/README.md) |
+| [第11章 过渡态搜索：neb.x](QE/tutorials/11-neb.md) | [11-neb](QE/examples/11-neb/README.md) |
+| [第12章 声子：ph.x、q2r.x 与 matdyn.x](QE/tutorials/12-phonon-dfpt.md) | [12-phonon-dfpt](QE/examples/12-phonon-dfpt/README.md) |
+| [第13章 介电常数、Born 有效电荷、红外与拉曼](QE/tutorials/13-dielectric-ir-raman.md) | [13-dielectric-ir-raman](QE/examples/13-dielectric-ir-raman/README.md) |
+| [第14章 杂化泛函与 meta-GGA](QE/tutorials/14-hybrid-metagga.md) | [14-hybrid-metagga](QE/examples/14-hybrid-metagga/README.md) |
+| [第15章 Wannier90 接口与插值能带](QE/tutorials/15-wannier90.md) | [15-wannier90](QE/examples/15-wannier90/README.md) |
+| [第16章 电声耦合与超导：ph.x 与 EPW 入门](QE/tutorials/16-elph-epw.md) | [16-elph-epw](QE/examples/16-elph-epw/README.md) |
+| [第17章 分子动力学：pw.x MD 与 Car-Parrinello cp.x](QE/tutorials/17-md-cp.md) | [17-md-cp](QE/examples/17-md-cp/README.md) |
+| [第18章 自动化、并行性能与报错排查](QE/tutorials/18-automation-parallel-troubleshooting.md) | [18-automation-parallel](QE/examples/18-automation-parallel/README.md) |
+
 ### 通用基础
 
 | 章节 | 示例 |
@@ -140,6 +165,8 @@ DFT-Tutorials/
 ├── Gaussian/      # Gaussian 16 教程、gjf 示例、日志解析与光谱脚本
 ├── CP2K/          # CP2K 教程、输入示例、脚本；data/ 为 CP2K 基组与赝势数据
 ├── OpenMX/        # OpenMX 教程、.dat 示例与后处理脚本
+├── QE/            # Quantum ESPRESSO 教程、pw.x/ph.x 示例与脚本
+├── Cases/         # 计算案例：酶催化 QM 簇模型等完整研究流程
 ├── Common/        # 通用基础：Linux/HPC、作业调度、建模、ASE/pymatgen、可视化、学习路线
 ├── Scripts/       # NEP/GPUMD 机器学习势、数据集生成、建模与分析脚本
 ├── Resources/     # GitHub 相关仓库精选与官方文档索引
@@ -170,6 +197,7 @@ python VASP/scripts/plot_band.py -h
 | Gaussian | Gaussian 16 Rev. C.01/C.02 + GaussView 6 | |
 | CP2K | 2026.2，兼顾 2023.x–2025.x | 新旧语法差异（如 CELL_OPT/TYPE、&DOS/&PDOS）均有对照 |
 | OpenMX | 4.0（patch 4.0.1）+ DFT_DATA19，兼顾 3.9 | 标注 4.0 的默认值变化 |
+| Quantum ESPRESSO | 7.x（以 QE 板块 README 为准） | 标注 7.1+ HUBBARD 卡片等新语法 |
 
 <a id="tutoring"></a>
 

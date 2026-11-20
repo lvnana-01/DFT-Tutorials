@@ -1,0 +1,32 @@
+&CONTROL
+! fcc Ni, collinear ferromagnet.
+! Pseudopotential: SSSP 1.3 PBE efficiency, ni_pbe_v1.4.uspp.F.UPF (GBRV)
+! (SSSP recommends ecutwfc = 45 Ry, ecutrho = 360 Ry).
+  calculation = 'scf'
+  prefix      = 'ni'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 2                ! fcc primitive cell
+  celldm(1)   = 6.65             ! a = 3.52 Angstrom (exp.)
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 45.0
+  ecutrho     = 360.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+  nspin       = 2
+  starting_magnetization(1) = 0.3
+/
+&ELECTRONS
+  conv_thr    = 1.0d-9
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Ni  58.6934  ni_pbe_v1.4.uspp.F.UPF
+ATOMIC_POSITIONS crystal
+  Ni  0.0  0.0  0.0
+K_POINTS automatic
+  16 16 16 0 0 0

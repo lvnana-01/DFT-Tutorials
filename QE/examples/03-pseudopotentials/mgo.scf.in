@@ -1,0 +1,32 @@
+&CONTROL
+! MgO rock salt, PBE, SSSP 1.3 PBE efficiency pseudopotentials:
+!   Mg.pbe-n-kjpaw_psl.0.3.0.UPF  (PAW, z_valence 2, hint 30 / 240 Ry)
+!   O.pbe-n-kjpaw_psl.0.1.UPF     (PAW, z_valence 6, hint 50 / 400 Ry)
+! Multi-element rule: take the MAXIMUM recommended cutoffs -> 50 / 400 Ry.
+! These are starting values; test them as in chapter 4.
+  calculation = 'scf'
+  prefix      = 'mgo'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tprnfor     = .true.
+  tstress     = .true.
+/
+&SYSTEM
+  ibrav     = 2               ! fcc (rock salt primitive cell)
+  celldm(1) = 7.96            ! Bohr (a = 4.21 Angstrom, near experiment)
+  nat       = 2
+  ntyp      = 2
+  ecutwfc   = 50.0            ! Ry = max(30, 50)
+  ecutrho   = 400.0           ! Ry = max(240, 400)
+/
+&ELECTRONS
+  conv_thr = 1.0d-10
+/
+ATOMIC_SPECIES
+  Mg  24.305  Mg.pbe-n-kjpaw_psl.0.3.0.UPF
+  O   15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+ATOMIC_POSITIONS crystal
+  Mg  0.0  0.0  0.0
+  O   0.5  0.5  0.5
+K_POINTS automatic
+  8 8 8 0 0 0

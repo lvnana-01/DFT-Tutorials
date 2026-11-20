@@ -1,0 +1,14 @@
+%nprocshared=16
+%mem=32GB
+%chk=oniom_hca2.chk
+#p ONIOM(B3LYP/Def2SVP:Amber)=EmbedCharge Opt Geom=Connectivity
+
+hCA II ONIOM(QM:MM) template - the full solvated protein is NOT included; build it yourself (see 07-oniom/README.md)
+
+@CHARGE_MULT_REAL_LOW@ @CHARGE_MULT_MODEL_HIGH@ @CHARGE_MULT_MODEL_LOW@
+@ONIOM_ATOM_LINES@
+
+@CONNECTIVITY@
+
+@MM_PARAMETERS_IF_ANY@
+

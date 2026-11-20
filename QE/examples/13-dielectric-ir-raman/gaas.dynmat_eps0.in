@@ -1,0 +1,8 @@
+&INPUT
+  fildyn = 'gaas.dynG'
+  asr    = 'crystal'          ! acoustic sum rule for a 3D crystal
+  lperm  = .true.             ! mode contributions to the static dielectric tensor (eps0)
+  filout = 'gaas.dynmat_eps0.modes'
+  ! q is NOT set (default 0,0,0): eps0 must be built from TO modes only.
+  ! With a nonzero q, dynmat.x warns that the permittivity includes TO-LO splitting.
+/

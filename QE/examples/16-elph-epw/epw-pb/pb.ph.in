@@ -1,0 +1,10 @@
+Pb: DFPT phonons on a coarse 6x6x6 q grid, saving dV_SCF for EPW
+&INPUTPH
+  prefix    = 'pb'
+  outdir    = './'           ! pp.py looks for ./_ph0 and ./pb.save
+  fildyn    = 'pb.dyn'
+  fildvscf  = 'dvscf'        ! EPW reads these via pp.py -> save/
+  tr2_ph    = 1.0d-15
+  ldisp     = .true.
+  nq1 = 6, nq2 = 6, nq3 = 6  ! coarse q grid; must divide the coarse k grid of the nscf run
+/

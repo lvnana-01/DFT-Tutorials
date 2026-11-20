@@ -1,0 +1,108 @@
+! Born-Oppenheimer MD of crystalline Si (64-atom 2x2x2 cubic supercell) with pw.x.
+! NVT with the stochastic velocity rescaling (SVR) thermostat.
+! Pseudopotential: SSSP 1.3 PBE efficiency, Si.pbe-n-rrkjus_psl.1.0.0.UPF (ultrasoft).
+! Time unit: dt is in Rydberg atomic units, 1 Ry a.u. = 4.8378e-17 s,
+! so dt = 40 corresponds to about 1.94 fs.
+&CONTROL
+  calculation = 'md'
+  prefix      = 'si64'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  dt          = 40.0          ! Ry a.u. (~1.94 fs)
+  nstep       = 1000          ! ~1.9 ps; first run a short test (e.g. 20 steps)
+  iprint      = 1
+  tprnfor     = .true.
+  max_seconds = 82800         ! stop cleanly before a 24 h wall-time limit
+  disk_io     = 'low'
+/
+&SYSTEM
+  ibrav       = 1
+  celldm(1)   = 20.52         ! Bohr = 2 x 10.26 (2x2x2 conventional cells); use your relaxed a
+  nat         = 64
+  ntyp        = 1
+  ecutwfc     = 30.0
+  ecutrho     = 240.0
+  occupations = 'smearing'    ! safe if the system becomes metallic (hot/liquid Si)
+  smearing    = 'gaussian'
+  degauss     = 0.01
+/
+&ELECTRONS
+  conv_thr    = 1.0d-8        ! about 1e-10 Ry/atom; loose conv_thr gives energy drift
+  mixing_beta = 0.5
+/
+&IONS
+  ion_dynamics      = 'verlet'
+  ion_temperature   = 'svr'          ! Bussi-Donadio-Parrinello thermostat
+  tempw             = 1000.0         ! K
+  nraise            = 25             ! tau = nraise*dt (~48 fs)
+  pot_extrapolation = 'second_order'
+  wfc_extrapolation = 'second_order'
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Si  0.000000  0.000000  0.000000
+  Si  0.000000  0.250000  0.250000
+  Si  0.250000  0.000000  0.250000
+  Si  0.250000  0.250000  0.000000
+  Si  0.125000  0.125000  0.125000
+  Si  0.125000  0.375000  0.375000
+  Si  0.375000  0.125000  0.375000
+  Si  0.375000  0.375000  0.125000
+  Si  0.000000  0.000000  0.500000
+  Si  0.000000  0.250000  0.750000
+  Si  0.250000  0.000000  0.750000
+  Si  0.250000  0.250000  0.500000
+  Si  0.125000  0.125000  0.625000
+  Si  0.125000  0.375000  0.875000
+  Si  0.375000  0.125000  0.875000
+  Si  0.375000  0.375000  0.625000
+  Si  0.000000  0.500000  0.000000
+  Si  0.000000  0.750000  0.250000
+  Si  0.250000  0.500000  0.250000
+  Si  0.250000  0.750000  0.000000
+  Si  0.125000  0.625000  0.125000
+  Si  0.125000  0.875000  0.375000
+  Si  0.375000  0.625000  0.375000
+  Si  0.375000  0.875000  0.125000
+  Si  0.000000  0.500000  0.500000
+  Si  0.000000  0.750000  0.750000
+  Si  0.250000  0.500000  0.750000
+  Si  0.250000  0.750000  0.500000
+  Si  0.125000  0.625000  0.625000
+  Si  0.125000  0.875000  0.875000
+  Si  0.375000  0.625000  0.875000
+  Si  0.375000  0.875000  0.625000
+  Si  0.500000  0.000000  0.000000
+  Si  0.500000  0.250000  0.250000
+  Si  0.750000  0.000000  0.250000
+  Si  0.750000  0.250000  0.000000
+  Si  0.625000  0.125000  0.125000
+  Si  0.625000  0.375000  0.375000
+  Si  0.875000  0.125000  0.375000
+  Si  0.875000  0.375000  0.125000
+  Si  0.500000  0.000000  0.500000
+  Si  0.500000  0.250000  0.750000
+  Si  0.750000  0.000000  0.750000
+  Si  0.750000  0.250000  0.500000
+  Si  0.625000  0.125000  0.625000
+  Si  0.625000  0.375000  0.875000
+  Si  0.875000  0.125000  0.875000
+  Si  0.875000  0.375000  0.625000
+  Si  0.500000  0.500000  0.000000
+  Si  0.500000  0.750000  0.250000
+  Si  0.750000  0.500000  0.250000
+  Si  0.750000  0.750000  0.000000
+  Si  0.625000  0.625000  0.125000
+  Si  0.625000  0.875000  0.375000
+  Si  0.875000  0.625000  0.375000
+  Si  0.875000  0.875000  0.125000
+  Si  0.500000  0.500000  0.500000
+  Si  0.500000  0.750000  0.750000
+  Si  0.750000  0.500000  0.750000
+  Si  0.750000  0.750000  0.500000
+  Si  0.625000  0.625000  0.625000
+  Si  0.625000  0.875000  0.875000
+  Si  0.875000  0.625000  0.875000
+  Si  0.875000  0.875000  0.625000
+K_POINTS gamma

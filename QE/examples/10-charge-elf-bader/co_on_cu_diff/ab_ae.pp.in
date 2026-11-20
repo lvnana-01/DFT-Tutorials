@@ -1,0 +1,13 @@
+&INPUTPP
+! All-electron (valence + core) density, PAW only (plot_num = 21).
+! Used as the Bader REFERENCE density (bader ... -ref ab_ae.cube).
+! pp.x documentation: requires a very dense real-space grid.
+  prefix   = 'ab'
+  outdir   = './tmp'
+  filplot  = 'ab.ae.pp'
+  plot_num = 21
+/
+&PLOT
+  nfile = 1, filepp(1) = 'ab.ae.pp'
+  iflag = 3, output_format = 6, fileout = 'ab_ae.cube'
+/

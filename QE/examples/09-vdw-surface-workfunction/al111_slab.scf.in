@@ -1,0 +1,45 @@
+&CONTROL
+! Al(111) slab single point for the work function (same setup as
+! al111_slab.relax.in). Paste the relaxed coordinates from
+! al111_slab.relax.out ("Begin final coordinates") before running.
+  calculation = 'scf'
+  prefix      = 'al111'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tefield     = .true.
+  dipfield    = .true.
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 6
+  ntyp        = 1
+  ecutwfc     = 40.0
+  ecutrho     = 320.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+  edir        = 3
+  emaxpos     = 0.75
+  eopreg      = 0.05
+  eamp        = 0.0
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.3
+  mixing_mode = 'local-TF'
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  2.856711  0.000000   0.000000
+  1.428356  2.473985   0.000000
+  0.000000  0.000000  30.000000
+ATOMIC_POSITIONS angstrom
+  Al  0.000000  0.000000   2.000000
+  Al  1.428356  0.824662   4.332495
+  Al  2.856711  1.649323   6.664990
+  Al  0.000000  0.000000   8.997485
+  Al  1.428356  0.824662  11.329980
+  Al  2.856711  1.649323  13.662475
+K_POINTS automatic
+  16 16 1 0 0 0

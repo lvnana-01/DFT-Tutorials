@@ -1,0 +1,7 @@
+&INPUT
+  fildyn = 'h2o.dynG'
+  asr    = 'zero-dim'     ! 3 translations + 3 rotations for a molecule
+  filout = 'h2o.dynmat.modes'
+  filmol = 'h2o.dynmat.mold'
+  filxsf = 'h2o.dynmat.axsf'
+/

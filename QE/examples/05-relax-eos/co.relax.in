@@ -1,0 +1,38 @@
+&CONTROL
+! Fixed-cell relaxation of a CO molecule in a 12 Angstrom cubic box.
+! The C atom is frozen with if_pos = 0 0 0 (removes free translation);
+! only O moves. Start from a stretched bond (1.20 Angstrom).
+! Pseudopotentials: SSSP 1.3 PBE efficiency
+!   C.pbe-n-kjpaw_psl.1.0.0.UPF  (hint 45 / 360 Ry)
+!   O.pbe-n-kjpaw_psl.0.1.UPF    (hint 50 / 400 Ry)
+  calculation   = 'relax'
+  prefix        = 'co'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  etot_conv_thr = 1.0d-5
+  forc_conv_thr = 1.0d-4
+  nstep         = 50
+/
+&SYSTEM
+  ibrav     = 1
+  A         = 12.0            ! cubic box edge in Angstrom
+  nat       = 2
+  ntyp      = 2
+  ecutwfc   = 50.0            ! max of the C and O hints
+  ecutrho   = 400.0
+  occupations = 'fixed'       ! closed-shell molecule
+/
+&ELECTRONS
+  conv_thr    = 1.0d-9
+  mixing_beta = 0.5
+/
+&IONS
+  ion_dynamics = 'bfgs'
+/
+ATOMIC_SPECIES
+  C  12.011  C.pbe-n-kjpaw_psl.1.0.0.UPF
+  O  15.999  O.pbe-n-kjpaw_psl.0.1.UPF
+ATOMIC_POSITIONS angstrom
+  C  6.000  6.000  6.000   0 0 0
+  O  6.000  6.000  7.200
+K_POINTS gamma

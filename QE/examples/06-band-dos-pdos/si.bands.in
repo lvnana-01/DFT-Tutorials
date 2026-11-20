@@ -1,0 +1,38 @@
+&CONTROL
+! Step 2: non-self-consistent eigenvalues along the path L-G-X-U|K-G.
+! Coordinates are crystal coordinates of the QE ibrav=2 reciprocal vectors.
+! The weight of each point = number of points on the segment that starts there;
+! weight 1 on U makes a direct jump U -> K (U and K are equivalent points).
+  calculation = 'bands'
+  prefix      = 'si'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  verbosity   = 'high'
+/
+&SYSTEM
+  ibrav     = 2
+  celldm(1) = 10.26
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 40.0
+  ecutrho   = 320.0
+  occupations = 'fixed'
+  nbnd      = 12              ! more empty bands to see the conduction band
+/
+&ELECTRONS
+  conv_thr       = 1.0d-10
+  diago_full_acc = .true.     ! empty states as accurate as occupied ones
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS crystal_b
+6
+  0.000  0.500  0.000  35   ! L
+  0.000  0.000  0.000  40   ! G
+  0.000  0.500  0.500  14   ! X
+  0.000  0.625  0.375   1   ! U
+ -0.375  0.375  0.000  42   ! K
+  0.000  0.000  0.000   1   ! G

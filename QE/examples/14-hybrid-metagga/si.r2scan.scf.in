@@ -1,0 +1,34 @@
+! Si (diamond), r2SCAN meta-GGA. REQUIRES pw.x compiled with Libxc
+! (otherwise: "libxc needed for this functional"). Norm-conserving pseudopotentials only.
+&CONTROL
+  calculation = 'scf'
+  prefix      = 'si_r2scan'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tstress     = .true.   ! meta-GGA stress was fixed in QE 7.6; check it before vc-relax
+  tprnfor     = .true.
+/
+&SYSTEM
+  ibrav     = 0
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 50.0       ! meta-GGA usually needs a higher cutoff than PBE; converge it
+  ecutrho   = 200.0
+  nbnd      = 8
+  input_dft = 'r2scan'
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.4
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si_ONCV_PBE-1.2.upf
+CELL_PARAMETERS angstrom
+  -2.7150   0.0000   2.7150
+   0.0000   2.7150   2.7150
+  -2.7150   2.7150   0.0000
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  6 6 6 0 0 0

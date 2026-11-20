@@ -1,0 +1,7 @@
+&INPUT
+! Fourier transform the dynamical matrices C(q) on the 4x4x4 grid into
+! real-space interatomic force constants C(R).
+  fildyn = 'si.dyn'
+  zasr   = 'crystal'         ! ASR on Born charges; irrelevant for non-polar Si
+  flfrc  = 'si444.fc'
+/

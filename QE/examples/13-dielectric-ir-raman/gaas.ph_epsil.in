@@ -1,0 +1,11 @@
+GaAs at Gamma: epsilon_inf, Born effective charges, Raman tensor
+&INPUTPH
+  prefix  = 'gaas'
+  outdir  = './tmp'
+  fildyn  = 'gaas.dynG'
+  tr2_ph  = 1.0d-16     ! tighter than the 1e-12 default for clean Z* and ASR
+  epsil   = .true.      ! macroscopic dielectric tensor (insulators only, q = 0 only)
+  trans   = .true.      ! phonons at q = 0; with epsil -> Born effective charges (zeu)
+  lraman  = .true.      ! non-resonant Raman tensor (NC + LDA, no spin, CPU build)
+/
+0.0 0.0 0.0

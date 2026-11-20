@@ -1,0 +1,15 @@
+%nprocshared=16
+%mem=24GB
+%oldchk=opt_reactant.chk
+%chk=scan_OC.chk
+#p B3LYP/Def2SVP EmpiricalDispersion=GD3BJ SCRF=(CPCM,Solvent=Water,Read) Opt=(ModRedundant,MaxCycles=100) Geom=Check Guess=Read
+
+hCA II cluster, relaxed scan of O(OH-)...C(CO2) from the optimised reactant, 13 steps of -0.10 A
+
+1 1
+
+@FREEZE@
+B 2 52 S 13 -0.10
+
+Eps=4.0
+

@@ -1,0 +1,8 @@
+&INPUTPP
+  outdir    = './tmp'
+  prefix    = 'si'
+  seedname  = 'si_val'
+  write_mmn = .true.
+  write_amn = .true.
+  write_unk = .false.     ! set .true. only to plot Wannier functions (large files)
+/

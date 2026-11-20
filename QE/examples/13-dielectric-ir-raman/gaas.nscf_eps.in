@@ -1,0 +1,34 @@
+! Non-SCF run on a dense full grid with empty bands, for epsilon.x (independent-particle optics).
+! Run AFTER gaas.scf.in (same prefix/outdir). It overwrites the wavefunctions in gaas.save.
+&CONTROL
+  calculation = 'nscf'
+  prefix      = 'gaas'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav     = 0
+  nat       = 2
+  ntyp      = 2
+  ecutwfc   = 80.0
+  ecutrho   = 320.0
+  nbnd      = 40        ! 14 occupied bands (28 valence electrons) + empty bands
+  nosym     = .true.    ! full grid, no symmetry reduction (safe for every QE version)
+  noinv     = .true.
+/
+&ELECTRONS
+  conv_thr        = 1.0d-10
+  diago_full_acc  = .true.   ! converge empty states as tightly as occupied ones
+/
+ATOMIC_SPECIES
+  Ga  69.723  Ga.upf
+  As  74.922  As.upf
+CELL_PARAMETERS angstrom
+  -2.8250   0.0000   2.8250
+   0.0000   2.8250   2.8250
+  -2.8250   2.8250   0.0000
+ATOMIC_POSITIONS crystal
+  Ga  0.00  0.00  0.00
+  As  0.25  0.25  0.25
+K_POINTS automatic
+  12 12 12 0 0 0

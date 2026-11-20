@@ -1,0 +1,17 @@
+&INPUTPP
+! Leave INPUTPP empty: step 1 is skipped and si.rho.pp (written by
+! si_charge.pp.in) is re-used. Only the 1D plot along the Si-Si bond is made.
+/
+&PLOT
+  nfile         = 1
+  filepp(1)     = 'si.rho.pp'
+  iflag         = 1             ! 1D line plot
+  output_format = 0             ! ignored for 1D; gnuplot-style two columns
+  ! ibrav=2: the atom at crystal (1/4,1/4,1/4) sits at (-1/4,1/4,1/4) alat.
+  ! The line starts on Si(1), crosses the bond centre and Si(2), and ends on
+  ! the empty site at (-1/2,1/2,1/2) alat.
+  x0(1) =  0.0, x0(2) = 0.0, x0(3) = 0.0     ! origin, alat units
+  e1(1) = -0.5, e1(2) = 0.5, e1(3) = 0.5     ! line vector, alat units
+  nx            = 201
+  fileout       = 'si_rho_bond.dat'
+/

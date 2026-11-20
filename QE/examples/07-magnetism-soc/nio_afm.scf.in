@@ -1,0 +1,47 @@
+&CONTROL
+! NiO in the AFM-II order (ferromagnetic (111) planes, alternating spin).
+! Rhombohedral 4-atom cell; Ni is split into two species Ni1 / Ni2
+! so that they can carry opposite starting magnetizations.
+! Plain PBE badly underestimates the gap of NiO: see Chapter 8 for DFT+U.
+! Pseudopotentials (SSSP 1.3 PBE efficiency):
+!   ni_pbe_v1.4.uspp.F.UPF  (45 / 360 Ry)
+!   O.pbe-n-kjpaw_psl.0.1.UPF  (50 / 400 Ry)  -> use the larger values
+  calculation = 'scf'
+  prefix      = 'nio'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 4
+  ntyp        = 3
+  ecutwfc     = 50.0
+  ecutrho     = 400.0
+  occupations = 'smearing'       ! safe start for a magnetic system;
+  smearing    = 'gaussian'       ! switch to 'fixed' + tot_magnetization
+  degauss     = 0.005            ! once the magnetic state is known
+  nspin       = 2
+  starting_magnetization(1) =  0.5   ! Ni1 spin up
+  starting_magnetization(2) = -0.5   ! Ni2 spin down
+  starting_magnetization(3) =  0.0   ! O
+  nbnd        = 30
+/
+&ELECTRONS
+  conv_thr    = 1.0d-9
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Ni1  58.6934  ni_pbe_v1.4.uspp.F.UPF
+  Ni2  58.6934  ni_pbe_v1.4.uspp.F.UPF
+  O    15.999   O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  4.170  2.085  2.085
+  2.085  4.170  2.085
+  2.085  2.085  4.170
+ATOMIC_POSITIONS angstrom
+  Ni1  0.000  0.000  0.000
+  Ni2  2.085  2.085  0.000
+  O    2.085  0.000  0.000
+  O    4.170  2.085  0.000
+K_POINTS automatic
+  6 6 6 0 0 0

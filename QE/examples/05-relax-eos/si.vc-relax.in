@@ -1,0 +1,41 @@
+&CONTROL
+! Variable-cell relaxation of diamond Si (lattice parameter only, by symmetry).
+! Start from a slightly expanded cell (celldm(1) = 10.40 Bohr) on purpose.
+! Pseudopotential: SSSP 1.3 PBE efficiency, Si.pbe-n-rrkjus_psl.1.0.0.UPF
+  calculation   = 'vc-relax'
+  prefix        = 'si'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  etot_conv_thr = 1.0d-5      ! Ry, total (extensive)
+  forc_conv_thr = 1.0d-4      ! Ry/Bohr, every force component
+  nstep         = 100
+/
+&SYSTEM
+  ibrav     = 2
+  celldm(1) = 10.40
+  nat       = 2
+  ntyp      = 1
+  ecutwfc   = 45.0            ! a bit higher than the energy-converged value
+  ecutrho   = 360.0           ! (stress converges more slowly: Pulay stress)
+  occupations = 'fixed'
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10
+  mixing_beta = 0.7
+/
+&IONS
+  ion_dynamics = 'bfgs'
+/
+&CELL
+  cell_dynamics  = 'bfgs'
+  press          = 0.0        ! target pressure in kbar
+  press_conv_thr = 0.2        ! kbar (default 0.5)
+  cell_dofree    = 'ibrav'    ! keep the fcc lattice of ibrav=2
+/
+ATOMIC_SPECIES
+  Si  28.0855  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Si  0.00  0.00  0.00
+  Si  0.25  0.25  0.25
+K_POINTS automatic
+  8 8 8 0 0 0

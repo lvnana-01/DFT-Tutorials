@@ -1,0 +1,56 @@
+&CONTROL
+! Chapter 11: relax the NEB end point "initial" -- H in the four-fold hollow site A at (1/4, 1/4) of the 2x2 cell.
+! Al(100) 2x2 surface cell, 3 layers (a = 4.04 Angstrom, unrelaxed guess),
+! bottom layer fixed with if_pos = 0 0 0. Teaching-size model only.
+! Pseudopotentials (SSSP 1.3 PBE efficiency, put in ./pseudo):
+!   Al.pbe-n-kjpaw_psl.1.0.0.UPF  (hint 30 / 240 Ry)
+!   H.pbe-rrkjus_psl.1.0.0.UPF    (hint 60 / 480 Ry)
+! Use EXACTLY the same &SYSTEM / &ELECTRONS / K_POINTS in h_al100.neb.in.
+  calculation   = 'relax'
+  prefix        = 'h_al100_initial'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  etot_conv_thr = 1.0d-5
+  forc_conv_thr = 5.0d-4      ! Ry/Bohr, about 0.013 eV/Angstrom
+  nstep         = 100
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 13
+  ntyp        = 2
+  ecutwfc     = 60.0          ! max SSSP hint of Al (30) and H (60)
+  ecutrho     = 480.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-8
+  mixing_beta = 0.3
+/
+&IONS
+  ion_dynamics = 'bfgs'
+/
+ATOMIC_SPECIES
+  Al  26.9815  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+  H    1.008   H.pbe-rrkjus_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  5.71342  0.00000   0.00000
+  0.00000  5.71342   0.00000
+  0.00000  0.00000  20.00000
+ATOMIC_POSITIONS angstrom
+  Al  0.00000  0.00000  2.00000   0 0 0
+  Al  0.00000  2.85671  2.00000   0 0 0
+  Al  2.85671  0.00000  2.00000   0 0 0
+  Al  2.85671  2.85671  2.00000   0 0 0
+  Al  1.42836  1.42836  4.02000
+  Al  1.42836  4.28507  4.02000
+  Al  4.28507  1.42836  4.02000
+  Al  4.28507  4.28507  4.02000
+  Al  0.00000  0.00000  6.04000
+  Al  0.00000  2.85671  6.04000
+  Al  2.85671  0.00000  6.04000
+  Al  2.85671  2.85671  6.04000
+  H   1.42836  1.42836  6.80000
+K_POINTS automatic
+  6 6 1 0 0 0

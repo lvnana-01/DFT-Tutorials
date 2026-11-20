@@ -1274,6 +1274,8 @@ echo "Quantum" | gmx energy -f qmmm.edr -o quantum.xvg              # 能量文�
 - [hyfaust/cp2k-learn](https://github.com/hyfaust/cp2k-learn)：中文分级教程，含 xTB 与 QM/MM 章节（GPL-3.0，只链接）
 - [tblite/tblite](https://github.com/tblite/tblite)：CP2K 中 GFN2-xTB 的后端库
 
+**本仓库案例**：酶催化 QM 簇模型完整流程（xTB 预优化 → DFT 优化/TS/IRC → 能量剖面，并讨论 CP2K QM/MM 替代方案）见 [计算案例：hCA II 反应机理的 QM 簇模型研究](../../Cases/01-enzyme-carbonic-anhydrase-ii-qm-cluster/README.md)。
+
 **本仓库脚本**：[md_analyze.py](../scripts/md_analyze.py)（MD 轨迹与能量分析）、[neb_plot.py](../scripts/neb_plot.py)（NEB 能量曲线）、[vib_thermo.py](../scripts/vib_thermo.py)（频率与热化学）、[cp2k_outparse.py](../scripts/cp2k_outparse.py)（输出解析）、[conv_kpoints.py](../scripts/conv_kpoints.py)（k 点收敛）、[job_cp2k_slurm.sh](../scripts/job_cp2k_slurm.sh)（Slurm 作业模板）。用法请运行 `python <脚本> -h` 查看。
 
 **关键文献**

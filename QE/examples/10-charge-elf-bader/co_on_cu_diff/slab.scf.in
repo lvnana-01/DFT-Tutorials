@@ -1,0 +1,49 @@
+&CONTROL
+! Chapter 10: "A" = bare Cu(111) slab, atoms frozen at their positions in AB.
+! Do NOT relax this slab: the Cu coordinates must be copied unchanged from
+! the (relaxed) AB structure, otherwise the difference density is meaningless.
+! Pseudopotentials (SSSP 1.3 PBE efficiency, put in ../pseudo):
+!   Cu.paw.z_11.ld1.psl.v1.0.0-low.upf  (hint 90 / 720 Ry)
+!   C.pbe-n-kjpaw_psl.1.0.0.UPF          (hint 45 / 360 Ry)
+!   O.pbe-n-kjpaw_psl.0.1.UPF            (hint 50 / 400 Ry)
+  calculation = 'scf'
+  prefix      = 'slab'
+  outdir      = './tmp'
+  pseudo_dir  = '../pseudo'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 12
+  ntyp        = 1
+  ecutwfc     = 90.0         ! max SSSP hint among Cu, C, O
+  ecutrho     = 720.0
+  occupations = 'smearing'
+  smearing    = 'mv'
+  degauss     = 0.02
+/
+&ELECTRONS
+  conv_thr    = 1.0d-8
+  mixing_beta = 0.3
+  mixing_mode = 'local-TF'   ! helps slabs with vacuum
+/
+ATOMIC_SPECIES
+  Cu  63.546  Cu.paw.z_11.ld1.psl.v1.0.0-low.upf
+CELL_PARAMETERS angstrom
+  5.13360  0.00000   0.00000
+  2.56680  4.44582   0.00000
+  0.00000  0.00000  22.00000
+ATOMIC_POSITIONS angstrom
+  Cu  0.00000  0.00000  2.00000
+  Cu  1.28340  2.22291  2.00000
+  Cu  2.56680  0.00000  2.00000
+  Cu  3.85020  2.22291  2.00000
+  Cu  1.28340  0.74097  4.09578
+  Cu  2.56680  2.96388  4.09578
+  Cu  3.85020  0.74097  4.09578
+  Cu  5.13360  2.96388  4.09578
+  Cu  2.56680  1.48194  6.19156
+  Cu  3.85020  3.70485  6.19156
+  Cu  5.13360  1.48194  6.19156
+  Cu  6.41699  3.70485  6.19156
+K_POINTS automatic
+  6 6 1 0 0 0

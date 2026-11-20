@@ -1,0 +1,10 @@
+&INPUT
+! Phonon density of states on a dense q grid (tetrahedron method).
+  asr   = 'crystal'
+  flfrc = 'si444.fc'
+  flfrq = 'si.dos.freq'
+  dos   = .true.
+  fldos = 'si.phdos'
+  nk1 = 20, nk2 = 20, nk3 = 20
+  deltaE = 1.0               ! cm^-1
+/

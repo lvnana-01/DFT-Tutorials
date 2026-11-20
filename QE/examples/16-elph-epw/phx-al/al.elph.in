@@ -1,0 +1,14 @@
+Al: phonons + electron-phonon coefficients on a 4x4x4 q grid
+&INPUTPH
+  prefix          = 'al'
+  outdir          = './tmp'
+  fildyn          = 'al.dyn'
+  fildvscf        = 'aldv'           ! dV_SCF is required for el-ph
+  tr2_ph          = 1.0d-15
+  ldisp           = .true.
+  nq1 = 4, nq2 = 4, nq3 = 4
+  trans           = .true.           ! phonons and lambdas in the same run
+  electron_phonon = 'interpolated'   ! needs a2Fsave from al.scf.fit.in
+  el_ph_sigma     = 0.005            ! Ry, spacing of double-delta smearings
+  el_ph_nsigma    = 10               ! 10 smearings: 0.005 ... 0.050 Ry
+/

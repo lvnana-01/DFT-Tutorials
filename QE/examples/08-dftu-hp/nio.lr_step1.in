@@ -1,0 +1,46 @@
+&CONTROL
+! Linear-response U for NiO, step 1 of 3 (see run_hp.sh):
+! "fake metal" scf with tiny smearing to find the magnetic ground state.
+! Starting from U = U_IN (0.0001 eV = plain PBE in the first cycle).
+! @U_IN@ is replaced by run_hp.sh.
+  calculation = 'scf'
+  prefix      = 'nio_lr'
+  outdir      = './tmp_lr'
+  pseudo_dir  = './pseudo'
+  verbosity   = 'high'
+/
+&SYSTEM
+  ibrav       = 0
+  nat         = 4
+  ntyp        = 3
+  ecutwfc     = 50.0
+  ecutrho     = 400.0
+  occupations = 'smearing'
+  smearing    = 'gaussian'
+  degauss     = 0.001
+  nspin       = 2
+  starting_magnetization(1) =  0.5
+  starting_magnetization(2) = -0.5
+/
+&ELECTRONS
+  conv_thr    = 1.0d-10       ! not too tight: step 2 restarts from this
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Ni1  58.6934  ni_pbe_v1.4.uspp.F.UPF
+  Ni2  58.6934  ni_pbe_v1.4.uspp.F.UPF
+  O    15.999   O.pbe-n-kjpaw_psl.0.1.UPF
+CELL_PARAMETERS angstrom
+  4.170  2.085  2.085
+  2.085  4.170  2.085
+  2.085  2.085  4.170
+ATOMIC_POSITIONS angstrom
+  Ni1  0.000  0.000  0.000
+  Ni2  2.085  2.085  0.000
+  O    2.085  0.000  0.000
+  O    4.170  2.085  0.000
+K_POINTS automatic
+  4 4 4 0 0 0
+HUBBARD {ortho-atomic}
+U Ni1-3d @U_IN@
+U Ni2-3d @U_IN@

@@ -1,0 +1,34 @@
+&CONTROL
+! bcc Fe, collinear spin-polarized (LSDA/sigma-GGA) ground state.
+! Pseudopotential: SSSP 1.3 PBE efficiency, Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+! (SSSP recommends ecutwfc = 90 Ry, ecutrho = 1080 Ry for Fe).
+  calculation = 'scf'
+  prefix      = 'fe'
+  outdir      = './tmp'
+  pseudo_dir  = './pseudo'
+  tprnfor     = .true.
+  tstress     = .true.
+/
+&SYSTEM
+  ibrav       = 3                ! bcc, primitive cell with 1 atom
+  celldm(1)   = 5.42             ! a = 2.87 Angstrom (exp.); use your relaxed value
+  nat         = 1
+  ntyp        = 1
+  ecutwfc     = 90.0
+  ecutrho     = 1080.0
+  occupations = 'smearing'
+  smearing    = 'mv'             ! Marzari-Vanderbilt cold smearing
+  degauss     = 0.02             ! Ry; test together with the k mesh
+  nspin       = 2                ! collinear spin polarization
+  starting_magnetization(1) = 0.5  ! per valence electron, range [-1,1]
+/
+&ELECTRONS
+  conv_thr    = 1.0d-9
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Fe  55.845  Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+ATOMIC_POSITIONS crystal
+  Fe  0.0  0.0  0.0
+K_POINTS automatic
+  14 14 14 0 0 0

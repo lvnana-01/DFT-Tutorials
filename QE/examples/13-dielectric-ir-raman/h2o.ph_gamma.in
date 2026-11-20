@@ -1,0 +1,13 @@
+H2O normal modes, IR and Raman at Gamma
+&INPUTPH
+  prefix  = 'h2o'
+  outdir  = './tmp'
+  fildyn  = 'h2o.dynG'
+  tr2_ph  = 1.0d-16
+  epsil   = .true.     ! needed for IR intensities (Born charges)
+  trans   = .true.
+  lraman  = .true.     ! needed for Raman activities (NC + LDA)
+  ! no asr here: lraman=.true. disables the gamma_gamma trick and ph.x resets asr
+  ! to .false.; the ASR is applied afterwards by dynmat.x (asr='zero-dim')
+/
+0.0 0.0 0.0

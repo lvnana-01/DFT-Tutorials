@@ -1,0 +1,12 @@
+# xTB detailed input (xcontrol) for the hCA II cluster pre-optimisation.
+# Atom numbers are 1-based and refer to build/cluster.xyz written by
+# 00-structure/cut_cluster.py with default options (1 water, no Glu106):
+#   9, 21, 33 = C-beta of His94/His96/His119 (methyl carbons)
+#   40        = C-beta of Thr199
+#   49        = O of the second-shell water
+# Check build/build_report.txt ("frozen (1-based)") and copy the list from
+# build/cluster_fix_xtb.txt if you used other options (e.g. --with-glu106).
+# Lines starting with '#' are comments in xcontrol files.
+$fix
+   atoms: 9,21,33,40,49
+$end

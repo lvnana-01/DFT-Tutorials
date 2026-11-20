@@ -1,0 +1,6 @@
+&PROJWFC
+! Lowdin charges and spilling parameter of AB (run after ab.scf.in).
+  prefix  = 'ab'
+  outdir  = './tmp'
+  filpdos = 'ab'
+/
